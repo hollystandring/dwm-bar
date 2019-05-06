@@ -20,11 +20,12 @@ DIR=$(dirname "$LOC")
 . "$DIR/functions/dwm_mail.sh"
 . "$DIR/functions/dwm_alsa.sh"
 . "$DIR/functions/dwm_weather.sh"
+. "$DIR/functions/dwm_keyboard.sh"
 . "$DIR/functions/dwm_date.sh"
 
 # Update dwm's status bar every second
 while true
 do
-    xsetroot -name "$(dwm_countdown)$(dwm_cmus)$(dwm_resources)$(dwm_mail)$(dwm_alsa)$(dwm_weather)$(dwm_date)"
+    xsetroot -name "$(dwm_countdown)$(dwm_cmus)$(dwm_resources)$(dwm_mail)$(dwm_alsa)$(dwm_weather)$(dwm_keyboard)$(dwm_date)"
     sleep 1
 done
