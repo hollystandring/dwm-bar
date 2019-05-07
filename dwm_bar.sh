@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A modular status bar for dwm
-# Joe Standring <jstandring@pm.me>
+# Joe Standring <joe@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: xorg-xsetroot
