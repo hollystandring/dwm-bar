@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A dwm_bar function to display information regarding system memory, CPU temperature, and storage
-# Joe Standring <jstandring@pm.me>
+# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 dwm_resources () {

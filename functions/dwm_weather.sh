@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A dwm_bar function to print the weather from wttr.in
-# Joe Standring <jstandring@pm.me>
+# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: curl

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A dwm_bar function that shows the current artist, track, position, duration, and status from cmus
-# Joe Standring <jstandring@pm.me>
+# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: cmus

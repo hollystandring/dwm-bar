@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A dwm_status function that displays the status of countdown.sh
-# Joe Standring <jstandring@pm.me>
+# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: https://github.com/joestandring/countdown
