@@ -1,5 +1,6 @@
 # dwm-bar
 A modular statusbar for DWM
+![screenshot](dwm-bar.png)
 ## Table of Contents
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
