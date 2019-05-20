@@ -8,14 +8,27 @@
 
 dwm_alsa () {
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
-    if [ $VOL -eq 0 ]; then
-        printf "[\U1F507 $VOL]\n"
-    elif [ $VOL -gt 0 ] && [ $VOL -le 33 ]; then
-        printf "[\U1F508 $VOL]\n"
-    elif [ $VOL -gt 33 ] && [ $VOL -le 66 ]; then
-        printf "[\U1F509 $VOL]\n"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        if [ "$VOL" -eq 0 ]; then
+            printf "[🔇 %s]\n" "$VOL]\n"
+        elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
+            printf "[🔈 %s]\n" "$VOL"
+        elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
+            printf "[🔉 %s]\n" "$VOL"
+        else
+            printf "[🔊 %s]\n" "$VOL"
+        fi
     else
-        printf "[\U1F50A $VOL]\n"
+        if [ "$VOL" -eq 0 ]; then
+            printf "[VOL %s]\n" "$VOL]\n"
+        elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
+            printf "[VOL %s]\n" "$VOL"
+        elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
+            printf "[VOL %s]\n" "$VOL"
+        else
+            printf "[VOL %s]\n" "$VOL"
+        fi
     fi
 }
+
 dwm_alsa

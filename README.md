@@ -1,7 +1,7 @@
 # dwm-bar
 A modular statusbar for DWM
-![screenshot](dwm-bar.png)
 ## Table of Contents
+- [Features](#features)
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
   - [dwm_countdown](#dwm_countdown)
@@ -16,6 +16,10 @@ A modular statusbar for DWM
 - [Customizing](#customizing)
 - [Acknowledgements](#acknowledgements)
 - [More to come!](#more-to-come)
+## Features
+* Fully modular! If you don't want to use a function, no worries.
+* Lightweight! dwm-bar is written entirely in POSIX-compliant shell script so need to install a hundred different packages to get it working.
+* Options! You can decide to use either unicode symbols or plaintext for module identifiers with the ```IDENTIFIER``` value.
 ## Current Functions
 ### dwm_alsa
 Displays the current master volume of ALSA
@@ -71,11 +75,12 @@ $ cd dwm-bar
 ```
 $ chmod +x dwm_bar.sh
 ```
-## Usage
+## Quick Start
 Simply run the script and dwm should display your bar:
 ```
 $ ./dwm_bar.sh
 ```
+Most likely, you will need to change some values for functions to get them to work - these are outlined with a comment for functions where this is likely the case.
 If you would like your bar to be displayed when X starts, add this to your .xinitrc file before launching dwm. For example, if the script is located in /home/$USER/dwm-bar/:
 ```
 # Statusbar
@@ -97,6 +102,14 @@ do
     sleep 1
 done
 ```
+You can also decide to use unicode or plaintext identifiers for functions by altering the ```$IDENTIFIER``` value. For example, set to ```"unicode"```, ```dwm_mail``` will display:
+```
+[📫 0]
+```
+Whereas, if it is not set it will display:
+```
+[MAI 0]
+```
 ## Acknowledgements
 Code for some functions was modified from:
 * [Klemens Nanni](https://notabug.org/kl3)
@@ -104,8 +117,8 @@ Code for some functions was modified from:
 * [Parket Johnson](https://github.com/ronno/scripts/blob/master/xsetcmus)
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
 ## More to come!
-* Ability to choose between showing unicode charachters or plaintext for identifiers in the bar
 * dwm_pulse function to control pulseaudio sound
 * dwm_bat function to display battery percentage and status
 * dwm_notifs function to show the last recieved notification in the bar
+* dwm_bluez function to show currently connected Bluetooth device using bluez
 * The ability to show network speeds and SSID in dwm_network

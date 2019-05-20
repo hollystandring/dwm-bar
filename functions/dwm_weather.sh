@@ -9,6 +9,11 @@
 # Change the value of LOCATION to match your city
 dwm_weather() {
     LOCATION=city
-    printf "[$(curl -s wttr.in/$LOCATION?format=1)]\n"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        printf "[%s]\n" "$(curl -s wttr.in/$LOCATION?format=1)"
+    else
+        printf "[WEA %s]\n" "$(curl -s wttr.in/$LOCATION?format=1 | grep -o "[0-9].*")"
+    fi
 }
+
 dwm_weather

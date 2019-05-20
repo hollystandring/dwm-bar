@@ -8,10 +8,16 @@
 
 dwm_mail () {
     MAILBOX=$(ls /path/to/inbox | wc -l)
-    if [ $MAILBOX -eq 0 ]; then
-        printf "[\U1F4ED $MAILBOX]\n"
+
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        if [ "$MAILBOX" -eq 0 ]; then
+            printf "[📪 %s]\n" "$MAILBOX"
+        else
+            printf "[📫 %s]\n" "$MAILBOX"
+        fi
     else
-        printf "[\U1F4EB $MAILBOX]\n"
+        printf "[MAI %s]\n" "$MAILBOX"
     fi
 }
+
 dwm_mail

@@ -11,10 +11,15 @@ dwm_resources () {
     # CPU temperature
     CPU=$(sysctl -n hw.sensors.cpu0.temp0 | cut -d. -f1)
     # Used and total storage in /home (rounded to 1024B)
-    STOUSED=$(df -h | grep '/home' | awk '{print $3}')
-    STOTOT=$(df -h | grep '/home' | awk '{print $2}')
-    STOPER=$(df -h | grep '/home' | awk '{print $5}')
+    STOUSED=$(df -h | grep '/home$' | awk '{print $3}')
+    STOTOT=$(df -h | grep '/home$' | awk '{print $2}')
+    STOPER=$(df -h | grep '/home$' | awk '{print $5}')
 
-    printf "[\U1F5A5 MEM $MEMUSED/$MEMTOT CPU $CPU STO $STOUSED/$STOTOT: $STOPER%]\n"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        printf "[💻 MEM %s/%s CPU %s STO %s/%s: %s]\n" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
+    else
+        printf "[STA | MEM %s/%s CPU %s STO %s/%s: %s]\n" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
+    fi
 }
+
 dwm_resources

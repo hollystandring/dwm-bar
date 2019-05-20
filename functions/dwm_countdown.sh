@@ -7,8 +7,17 @@
 # Dependencies: https://github.com/joestandring/countdown
 
 dwm_countdown () {
-    if [ -e /tmp/countdown.* ]; then
-        printf "[\U23F3 $(tail -1 /tmp/countdown.*)]"
-    fi
+    for f in /tmp/countdown.*; do
+        if [ -e "$f" ]; then
+            if [ "$IDENTIFIER" = "unicode" ]; then
+                printf "[⏳ %s]\n" "$(tail -1 /tmp/countdown.*)"
+            else
+                printf "[CDN %s]\n" "$(tail -1 /tmp/countdown.*)"
+            fi
+
+            break
+        fi
+    done
 }
+
 dwm_countdown

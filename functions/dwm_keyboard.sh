@@ -7,6 +7,11 @@
 # Dependencies: xorg-setxkbmap
 
 dwm_keyboard () {
-    printf "[\U2328 $(setxkbmap -query | awk '/layout/{print $2}')]\n"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        printf "[⌨ %s]\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
+    else
+        printf "[KEY %s]\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
+    fi
 }
+
 dwm_keyboard
