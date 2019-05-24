@@ -4,6 +4,7 @@ A modular statusbar for DWM
 - [Features](#features)
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
+  - [dwm_pulse](#dwm_pulse)
   - [dwm_countdown](#dwm_countdown)
   - [dwm_keyboard](#dwm_keyboard)
   - [dwm_resources](#dwm_resources)
@@ -11,6 +12,8 @@ A modular statusbar for DWM
   - [dwm_date](#dwm_date)
   - [dwm_mail](#dwm_mail)
   - [dwm_weather](#dwm_weather)
+  - [dwm_network](#dwm_network)
+  - [dwm_vpn](#dwm_vpn)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Customizing](#customizing)
@@ -26,18 +29,19 @@ Displays the current master volume of ALSA
 ```
 [🔉 55]
 ```
+Dependencies: ```alsa-utils```
 ### dwm_pulse
 Displays the current master volume of PulseAudio
 ```
 [🔉 55]
 ```
-Dependencies: ```alsa-utils```
+Dependencies: ```pamixer```
 ### dwm_countdown
 Displays the status of [countdown](https://github.com/joestandring/countdown)
 ```
 [⏳ 00:10:00]
 ```
-Dependeincies: ```[countdown](https://github.com/joestandring/countdown)```
+Dependencies: ```[countdown](https://github.com/joestandring/countdown)```
 ### dwm_keyboard
 Displays the current keyboard layout
 ```
@@ -70,6 +74,18 @@ Displays the current weather provided by [wttr.in](https://wttr.in)
 ```
 [☀ +20°C]
 ```
+### dwm_network
+Displays the current network connection, private IP, and public IP
+```
+[🌐 enp7s0: 192.168.0.1/24 | 185.199.109.153]
+```
+Dependencies: ```NetworkManager, curl```
+### dwm_vpn
+Displays the current VPN connection
+```
+[🔒 Sweden - Stockholm]
+```
+Dependencies: ```NetworkManager-openvpn```
 ## Installation
 1. Clone and enter the repository:
 ```
@@ -123,6 +139,4 @@ Code for some functions was modified from:
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
 ## More to come!
 * dwm_bat function to display battery percentage and status
-* dwm_notifs function to show the last recieved notification in the bar
 * dwm_bluez function to show currently connected Bluetooth device using bluez
-* The ability to show network speeds and SSID in dwm_network
