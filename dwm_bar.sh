@@ -23,6 +23,7 @@ DIR=$(dirname "$LOC")
 . "$DIR/functions/dwm_resources.sh"
 . "$DIR/functions/dwm_mail.sh"
 . "$DIR/functions/dwm_alsa.sh"
+# . "$DIR/functions/dwm_pulse.sh"
 . "$DIR/functions/dwm_weather.sh"
 . "$DIR/functions/dwm_keyboard.sh"
 . "$DIR/functions/dwm_date.sh"

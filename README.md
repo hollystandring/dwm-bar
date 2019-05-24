@@ -26,6 +26,11 @@ Displays the current master volume of ALSA
 ```
 [🔉 55]
 ```
+### dwm_pulse
+Displays the current master volume of PulseAudio
+```
+[🔉 55]
+```
 Dependencies: ```alsa-utils```
 ### dwm_countdown
 Displays the status of [countdown](https://github.com/joestandring/countdown)
@@ -117,7 +122,6 @@ Code for some functions was modified from:
 * [Parket Johnson](https://github.com/ronno/scripts/blob/master/xsetcmus)
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
 ## More to come!
-* dwm_pulse function to control pulseaudio sound
 * dwm_bat function to display battery percentage and status
 * dwm_notifs function to show the last recieved notification in the bar
 * dwm_bluez function to show currently connected Bluetooth device using bluez
