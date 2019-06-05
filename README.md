@@ -28,13 +28,13 @@ A modular statusbar for DWM
 ### dwm_alsa
 Displays the current master volume of ALSA
 ```
-[🔉 55]
+[🔉 55%]
 ```
 Dependencies: ```alsa-utils```
 ### dwm_pulse
 Displays the current master volume of PulseAudio
 ```
-[🔉 55]
+[🔉 55%]
 ```
 Dependencies: ```pamixer```
 ### dwm_countdown
