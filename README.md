@@ -5,6 +5,7 @@ A modular statusbar for DWM
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
   - [dwm_pulse](#dwm_pulse)
+  - [dwm_battery](#dwm_battery)
   - [dwm_countdown](#dwm_countdown)
   - [dwm_keyboard](#dwm_keyboard)
   - [dwm_resources](#dwm_resources)
@@ -37,6 +38,11 @@ Displays the current master volume of PulseAudio
 [🔉 55%]
 ```
 Dependencies: ```pamixer```
+### dwm_battery
+Displays battery level and status
+```
+[🔋 100 full]
+```
 ### dwm_countdown
 Displays the status of [countdown](https://github.com/joestandring/countdown)
 ```
@@ -145,5 +151,4 @@ Code for some functions was modified from:
 * [Parket Johnson](https://github.com/ronno/scripts/blob/master/xsetcmus)
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
 ## More to come!
-* dwm_bat function to display battery percentage and status
 * dwm_bluez function to show currently connected Bluetooth device using bluez
