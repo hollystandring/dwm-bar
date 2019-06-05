@@ -42,7 +42,7 @@ Displays the status of [countdown](https://github.com/joestandring/countdown)
 ```
 [⏳ 00:10:00]
 ```
-Dependencies: ```[countdown](https://github.com/joestandring/countdown)```
+Dependencies: ```countdown.sh```
 ### dwm_keyboard
 Displays the current keyboard layout
 ```
