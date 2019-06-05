@@ -8,13 +8,13 @@ A modular statusbar for DWM
   - [dwm_countdown](#dwm_countdown)
   - [dwm_keyboard](#dwm_keyboard)
   - [dwm_resources](#dwm_resources)
-  - [dwm_battery](#dwm_battery)
   - [dwm_cmus](#dwm_cmus)
   - [dwm_date](#dwm_date)
   - [dwm_mail](#dwm_mail)
   - [dwm_weather](#dwm_weather)
   - [dwm_network](#dwm_network)
   - [dwm_vpn](#dwm_vpn)
+  - [dwm_ccurse](#dwm_ccurse)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Customizing](#customizing)
@@ -54,11 +54,6 @@ Displays information regarding memory, CPU temperature, and storage
 ```
 [🖥 MEM 1.3Gi/15Gi CPU 45C STO 2.3G/200G: 2%]
 ```
-### dwm_battery
-Displays battery level and status
-```
-[🔌 55 Charging]
-```
 ### dwm_cmus
 displays current cmus status, artist, track, position, duration, and shuffle
 ```
@@ -81,7 +76,7 @@ Displays the current weather provided by [wttr.in](https://wttr.in)
 [☀ +20°C]
 ```
 ### dwm_network
-Displays the current network connection/SSID, private IP, and public IP
+Displays the current network connection, private IP, and public IP
 ```
 [🌐 enp7s0: 192.168.0.1/24 | 185.199.109.153]
 ```
@@ -92,6 +87,12 @@ Displays the current VPN connection
 [🔒 Sweden - Stockholm]
 ```
 Dependencies: ```NetworkManager-openvpn```
+### dwm_ccurse
+Shows the next appointment from calcurse
+```
+[💡 18/04/19 19:00 20:00 Upload dwm_ccurse]
+```
+Dependencies: ```calcurse```
 ## Installation
 1. Clone and enter the repository:
 ```
