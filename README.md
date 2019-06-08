@@ -17,6 +17,7 @@ A modular statusbar for DWM
   - [dwm_network](#dwm_network)
   - [dwm_vpn](#dwm_vpn)
   - [dwm_ccurse](#dwm_ccurse)
+  - [dwm_transmission](#dwm_transmission)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Customizing](#customizing)
@@ -95,11 +96,17 @@ Displays the current VPN connection
 ```
 Dependencies: ```NetworkManager-openvpn```
 ### dwm_ccurse
-Shows the next appointment from calcurse
+Displays the next appointment from calcurse
 ```
 [💡 18/04/19 19:00 20:00 Upload dwm_ccurse]
 ```
 Dependencies: ```calcurse```
+### dwm_transmission
+Displays the current status of a torrent with transmission-remote
+```
+[⏬ archlinux-2019.06.01... | 92% 1min ⬆3.4 ⬇1.5]
+```
+Dependencies: ```transmission-remote```
 ## Installation
 1. Clone and enter the repository:
 ```
@@ -129,7 +136,7 @@ dwm-bar is completley modular, meaning you can mix and match functions to your h
 If you want to make your own function, for example dwm_myfunction.sh, you should create it in the functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
 ```
 # Import the modules
-. "$DIR/functions/dwm_myfucntion"
+. "$DIR/bar-functions/dwm_myfucntion"
 
 while true
 do
@@ -143,7 +150,7 @@ You can also decide to use unicode or plaintext identifiers for functions by alt
 ```
 Whereas, if it is not set it will display:
 ```
-[MAI 0]
+[MAIL 0]
 ```
 ## Acknowledgements
 Code for some functions was modified from:
@@ -153,3 +160,4 @@ Code for some functions was modified from:
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
 ## More to come!
 * dwm_bluez function to show currently connected Bluetooth device using bluez
+* dwm_mpd
