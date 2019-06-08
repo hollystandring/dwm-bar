@@ -43,7 +43,7 @@ Dependencies: ```pamixer```
 ### dwm_battery
 Displays battery level and status
 ```
-[🔋 100 full]
+[🔋 100% full]
 ```
 ### dwm_countdown
 Displays the status of [countdown](https://github.com/joestandring/countdown)
