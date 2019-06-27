@@ -10,11 +10,11 @@ dwm_vpn () {
     VPN=$(nmcli -a | grep 'VPN connection' | sed -e 's/\( VPN connection\)*$//g')
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$VPN" != "" ]; then
-            printf "[🔒 %s]\n" "$VPN"
+            printf "🔒 %s\n" "$VPN"
         fi
     else
         if [ "$VPN" != "" ]; then
-            printf "[VPN %s]\n" "$VPN"
+            printf "VPN %s\n" "$VPN"
         fi
     fi
 }

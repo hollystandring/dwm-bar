@@ -8,9 +8,9 @@
 
 dwm_keyboard () {
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "[⌨ %s]\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
+        printf "⌨ %s\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
     else
-        printf "[KEY %s]\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
+        printf "KEY %s\n" "$(setxkbmap -query | awk '/layout/{print $2}')"
     fi
 }
 

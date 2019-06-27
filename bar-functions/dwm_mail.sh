@@ -11,12 +11,12 @@ dwm_mail () {
 
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$MAILBOX" -eq 0 ]; then
-            printf "[📪 %s]\n" "$MAILBOX"
+            printf "📪 %s\n" "$MAILBOX"
         else
-            printf "[📫 %s]\n" "$MAILBOX"
+            printf "📫 %s\n" "$MAILBOX"
         fi
     else
-        printf "[MAI %s]\n" "$MAILBOX"
+        printf "MAI %s\n" "$MAILBOX"
     fi
 }
 

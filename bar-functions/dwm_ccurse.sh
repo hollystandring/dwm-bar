@@ -10,9 +10,9 @@ dwm_ccurse () {
     APPOINTMENT=$(calcurse -a | head -n 3 | tr -d '\n+>-' | awk '$1=$1' | sed 's/://')
 
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "[💡 %s]\n" "$APPOINTMENT"
+        printf "💡 %s\n" "$APPOINTMENT"
     else
-        printf "[APT %s]\n" "$APPOINTMENT"
+        printf "APT %s\n" "$APPOINTMENT"
     fi
 }
 

@@ -30,11 +30,12 @@ export IDENTIFIER="unicode"
 . "$DIR/bar-functions/dwm_vpn.sh"
 . "$DIR/bar-functions/dwm_network.sh"
 . "$DIR/bar-functions/dwm_keyboard.sh"
+. "$DIR/bar-functions/dwm_ccurse.sh"
 . "$DIR/bar-functions/dwm_date.sh"
 
 # Update dwm status bar every second
 while true
 do
-    xsetroot -name "$(dwm_countdown)$(dwm_transmission)$(dwm_cmus)$(dwm_resources)$(dwm_battery)$(dwm_mail)$(dwm_alsa)$(dwm_weather)$(dwm_vpn)$(dwm_network)$(dwm_keyboard)$(dwm_date)"
+    xsetroot -name "[$(dwm_countdown)][$(dwm_transmission)][$(dwm_cmus)][$(dwm_resources)][$(dwm_battery)][$(dwm_mail)][$(dwm_alsa)][$(dwm_weather)][$(dwm_vpn)][$(dwm_network)][$(dwm_keyboard)][$(dwm_date)]"
     sleep 1
 done
