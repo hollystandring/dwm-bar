@@ -18,6 +18,7 @@ A modular statusbar for DWM
   - [dwm_vpn](#dwm_vpn)
   - [dwm_ccurse](#dwm_ccurse)
   - [dwm_transmission](#dwm_transmission)
+  - [dwm_backlight](#dwm_backlight)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Customizing](#customizing)
@@ -107,6 +108,12 @@ Displays the current status of a torrent with transmission-remote
 [⏬ archlinux-2019.06.01... | 92% 1min ⬆3.4 ⬇1.5]
 ```
 Dependencies: ```transmission-remote```
+### dwm_backlight
+Displays the current backlight level with xbacklight
+```
+[☀ 80]
+```
+Dependencies: ```xbacklight```
 ## Installation
 1. Clone and enter the repository:
 ```
