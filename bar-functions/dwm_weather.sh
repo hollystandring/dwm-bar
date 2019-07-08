@@ -16,7 +16,7 @@ dwm_weather() {
     else
         printf "WEA %s" "$(curl -s wttr.in/$LOCATION?format=1 | grep -o "[0-9].*")"
     fi
-    printf "%s" "$SEP2"
+    printf "%s\n" "$SEP2"
 }
 
 dwm_weather

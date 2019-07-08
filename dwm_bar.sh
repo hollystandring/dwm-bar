@@ -16,6 +16,7 @@ DIR=$(dirname "$LOC")
 # Change the appearance of the module identifier. if this is set to "unicode", then symbols will be used as identifiers instead of text. E.g. [📪 0] instead of [MAIL 0].
 # Requires a font with adequate unicode character support
 export IDENTIFIER="unicode"
+
 # Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
 export SEP1="["
 export SEP2="]"

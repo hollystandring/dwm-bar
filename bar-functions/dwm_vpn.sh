@@ -16,7 +16,7 @@ dwm_vpn () {
         else
             printf "VPN %s" "$VPN"
         fi
-        printf "%s" "$SEP2"
+        printf "%s\n" "$SEP2"
     fi
 }
 
