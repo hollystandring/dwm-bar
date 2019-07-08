@@ -17,31 +17,33 @@ dwm_transmission () {
     DOWN=$(printf "%s" "$TORRENT" | awk '{print $5;}')
 
     if [ "$ID" != "Sum:" ]; then
+        printf "%s" "$SEP1"
         if [ "$IDENTIFIER" = "unicode" ]; then
             case "$STATUS" in
                 "Idle")
-                    printf "🛑 %s | %s %s ⬆%s ⬇%s\n" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
+                    printf "🛑 %s | %s %s ⬆%s ⬇%s" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
                     ;;
                 "Seeding")
-                    printf "🌱 %s | ⬆%s ⬇%s\n" "$NAME" "$UP" "$DOWN"
+                    printf "🌱 %s | ⬆%s ⬇%s" "$NAME" "$UP" "$DOWN"
                     ;;
                 "Downloading")
-                    printf "⏬ %s | %s %s ⬆%s ⬇%s\n" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
+                    printf "⏬ %s | %s %s ⬆%s ⬇%s" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
                     ;;
             esac
         else
             case "$STATUS" in
                 "Idle")
-                    printf "IDLE %s | %s %s ⬆%s ⬇%s\n" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
+                    printf "IDLE %s | %s %s ⬆%s ⬇%s" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
                     ;;
                 "Seeding")
-                    printf "SEEDING %s | ⬆%s ⬇%s\n" "$NAME" "$UP" "$DOWN"
+                    printf "SEEDING %s | ⬆%s ⬇%s" "$NAME" "$UP" "$DOWN"
                     ;;
                 "Downloading")
-                    printf "DOWNLOADING %s | %s %s ⬆%s ⬇%s\n" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
+                    printf "DOWNLOADING %s | %s %s ⬆%s ⬇%s" "$NAME" "$DONE" "$ETA" "$UP" "$DOWN"
                     ;;
             esac
         fi
+        printf "%s\n" "$SEP2"
     fi
 }
 

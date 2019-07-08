@@ -2,7 +2,6 @@
 A modular statusbar for DWM
 ![screenshot](sshot.png)
 ## Table of Contents
-- [Features](#features)
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
   - [dwm_pulse](#dwm_pulse)
@@ -24,11 +23,6 @@ A modular statusbar for DWM
 - [Customizing](#customizing)
 - [Acknowledgements](#acknowledgements)
 - [More to come!](#more-to-come)
-## Features
-* Fully modular! If you don't want to use a function, no worries.
-* Lightweight! dwm-bar is written entirely in POSIX-compliant shell script so need to install a hundred different packages to get it working.
-* Options! You can decide to use either unicode symbols or plaintext for module identifiers with the ```IDENTIFIER``` value.
-## Current Functions
 ### dwm_alsa
 Displays the current master volume of ALSA
 ```
@@ -139,8 +133,8 @@ If you would like your bar to be displayed when X starts, add this to your .xini
 exec dwm
 ```
 ## Customizing
-dwm-bar is completley modular, meaning you can mix and match functions to your hearts content. It's functions are located in the functions/ subdirectory and included in dwm_bar.sh
-If you want to make your own function, for example dwm_myfunction.sh, you should create it in the functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
+dwm-bar is completley modular, meaning you can mix and match functions to your hearts content. It's functions are located in the bar-functions/ subdirectory and included in dwm_bar.sh
+If you want to make your own function, for example dwm_myfunction.sh, you should create it in the bar-functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
 ```
 # Import the modules
 . "$DIR/bar-functions/dwm_myfucntion"

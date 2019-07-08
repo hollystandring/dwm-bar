@@ -15,11 +15,13 @@ dwm_resources () {
     STOTOT=$(df -h | grep '/home$' | awk '{print $2}')
     STOPER=$(df -h | grep '/home$' | awk '{print $5}')
 
+    printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "💻 MEM %s/%s CPU %s STO %s/%s: %s\n" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
+        printf "💻 MEM %s/%s CPU %s STO %s/%s: %s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
     else
-        printf "STA | MEM %s/%s CPU %s STO %s/%s: %s\n" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
+        printf "STA | MEM %s/%s CPU %s STO %s/%s: %s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
     fi
+    printf "%s\n" "$SEP2"
 }
 
 dwm_resources

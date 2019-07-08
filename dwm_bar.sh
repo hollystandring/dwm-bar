@@ -16,6 +16,9 @@ DIR=$(dirname "$LOC")
 # Change the appearance of the module identifier. if this is set to "unicode", then symbols will be used as identifiers instead of text. E.g. [📪 0] instead of [MAIL 0].
 # Requires a font with adequate unicode character support
 export IDENTIFIER="unicode"
+# Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
+export SEP1="["
+export SEP2="]"
 
 # Import the modules
 . "$DIR/bar-functions/dwm_countdown.sh"
@@ -37,6 +40,6 @@ export IDENTIFIER="unicode"
 # Update dwm status bar every second
 while true
 do
-    xsetroot -name "[$(dwm_countdown)][$(dwm_transmission)][$(dwm_cmus)][$(dwm_resources)][$(dwm_battery)][$(dwm_mail)][$(dwm_backlight)][$(dwm_alsa)][$(dwm_weather)][$(dwm_vpn)][$(dwm_network)][$(dwm_keyboard)][$(dwm_date)]"
+    xsetroot -name "$(dwm_countdown)$(dwm_transmission)$(dwm_cmus)$(dwm_resources)$(dwm_battery)$(dwm_mail)$(dwm_backlight)$(dwm_alsa)$(dwm_pulse)$(dwm_weather)$(dwm_vpn)$(dwm_network)$(dwm_keyboard)$(dwm_date)]"
     sleep 1
 done
