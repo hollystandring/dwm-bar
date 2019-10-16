@@ -7,7 +7,8 @@
 # Dependencies: calcurse
 
 dwm_ccurse () {
-    APPOINTMENT=$(calcurse -a | head -n 3 | tr -d '\n+>-' | awk '$1=$1' | sed 's/://')
+    APTSFILE="$HOME/.calcurse/apts"
+    APPOINTMENT=$(head -n 1 "$APTSFILE" | sed -r 's/\[1\] //')
 
     if [ "$APPOINTMENT" != "" ]; then
         printf "%s" "$SEP1"
