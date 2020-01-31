@@ -19,6 +19,7 @@ A modular statusbar for DWM
   - [dwm_transmission](#dwm_transmission)
   - [dwm_backlight](#dwm_backlight)
 - [Installation](#installation)
+- [Reccomendations](#reccomendations)
 - [Usage](#usage)
 - [Customizing](#customizing)
 - [Acknowledgements](#acknowledgements)
@@ -118,6 +119,11 @@ $ cd dwm-bar
 ```
 $ chmod +x dwm_bar.sh
 ```
+## Reccomendations
+To make the most out of unicode support, consider using a font that inludes many unicode charachters. For example:
+* [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+* [Siji](https://github.com/stark/siji)
+While not always neccessary, it's a good idea to specify these fonts in your dwm config.
 ## Quick Start
 Simply run the script and dwm should display your bar:
 ```
