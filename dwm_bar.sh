@@ -23,6 +23,7 @@ export SEP2="]"
 
 # Import the modules
 . "$DIR/bar-functions/dwm_countdown.sh"
+. "$DIR/bar-functions/dwm_alarm.sh"
 . "$DIR/bar-functions/dwm_transmission.sh"
 . "$DIR/bar-functions/dwm_cmus.sh"
 . "$DIR/bar-functions/dwm_resources.sh"
@@ -41,6 +42,6 @@ export SEP2="]"
 # Update dwm status bar every second
 while true
 do
-    xsetroot -name "$(dwm_countdown)$(dwm_transmission)$(dwm_cmus)$(dwm_resources)$(dwm_battery)$(dwm_mail)$(dwm_backlight)$(dwm_alsa)$(dwm_pulse)$(dwm_weather)$(dwm_vpn)$(dwm_network)$(dwm_keyboard)$(dwm_date)"
+    xsetroot -name "$(dwm_countdown)$(dwm_alarm.sh)$(dwm_transmission)$(dwm_cmus)$(dwm_resources)$(dwm_battery)$(dwm_mail)$(dwm_backlight)$(dwm_alsa)$(dwm_pulse)$(dwm_weather)$(dwm_vpn)$(dwm_network)$(dwm_keyboard)$(dwm_date)"
     sleep 1
 done

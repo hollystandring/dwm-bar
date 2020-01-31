@@ -7,6 +7,7 @@ A modular statusbar for DWM
   - [dwm_pulse](#dwm_pulse)
   - [dwm_battery](#dwm_battery)
   - [dwm_countdown](#dwm_countdown)
+  - [dwm_alarm](#dwm_alarm)
   - [dwm_keyboard](#dwm_keyboard)
   - [dwm_resources](#dwm_resources)
   - [dwm_cmus](#dwm_cmus)
@@ -47,6 +48,12 @@ Displays the status of [countdown](https://github.com/joestandring/countdown)
 [⏳ 00:10:00]
 ```
 Dependencies: ```countdown.sh```
+### dwm_alarm
+Displays upcoming alarms from [alarm](https://github.com/joestandring/alarm)
+```
+[⏰ 22:30:00]
+```
+Dependencies: ```alarm.sh```
 ### dwm_keyboard
 Displays the current keyboard layout
 ```
