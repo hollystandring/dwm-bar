@@ -123,6 +123,7 @@ $ chmod +x dwm_bar.sh
 To make the most out of unicode support, consider using a font that inludes many unicode charachters. For example:
 * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 * [Siji](https://github.com/stark/siji)
+
 While not always neccessary, it's a good idea to specify these fonts in your dwm config.
 ## Quick Start
 Simply run the script and dwm should display your bar:
