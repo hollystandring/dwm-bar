@@ -78,8 +78,9 @@ Displays current mpc status, artist, track, position, duration, and shuffle
 [▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
 Dependencies: ```mpc```
-### dwm_mpc
+### dwm_spotify
 Displays current Spotify status, artist, track, and duration
+
 Unfortunatley a method to display the track position and shuffle status have not been found
 ```
 [▶ The Unicorns - Tuff Ghost 2:56]
