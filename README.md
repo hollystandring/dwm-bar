@@ -26,7 +26,6 @@ A modular statusbar for DWM
 - [Usage](#usage)
 - [Customizing](#customizing)
 - [Acknowledgements](#acknowledgements)
-- [More to come!](#more-to-come)
 ### dwm_alsa
 Displays the current master volume of ALSA
 ```
@@ -189,6 +188,3 @@ Code for some functions was modified from:
 * [@boylemic](https://github.com/boylemic/configs/blob/master/dwm_status)
 * [Parket Johnson](https://github.com/ronno/scripts/blob/master/xsetcmus)
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
-## More to come!
-* dwm_bluez function to show currently connected Bluetooth device using bluez
-* dwm_mpd
