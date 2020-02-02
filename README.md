@@ -25,7 +25,6 @@ A modular statusbar for DWM
 - [Usage](#usage)
 - [Customizing](#customizing)
 - [Acknowledgements](#acknowledgements)
-- [More to come!](#more-to-come)
 ### dwm_alsa
 Displays the current master volume of ALSA
 ```
