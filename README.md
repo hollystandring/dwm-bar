@@ -11,6 +11,7 @@ A modular statusbar for DWM
   - [dwm_keyboard](#dwm_keyboard)
   - [dwm_resources](#dwm_resources)
   - [dwm_cmus](#dwm_cmus)
+  - [dwm_mpc](#dwm_mpc)
   - [dwm_date](#dwm_date)
   - [dwm_mail](#dwm_mail)
   - [dwm_weather](#dwm_weather)
@@ -71,6 +72,12 @@ displays current cmus status, artist, track, position, duration, and shuffle
 [▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
 Dependencies: ```cmus```
+### dwm_mpc
+displays current mpc status, artist, track, position, duration, and shuffle
+```
+[▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
+```
+Dependencies: ```mpc```
 ### dwm_date
 Displays the current date and time
 ```
