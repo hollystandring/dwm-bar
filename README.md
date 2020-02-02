@@ -12,6 +12,7 @@ A modular statusbar for DWM
   - [dwm_resources](#dwm_resources)
   - [dwm_cmus](#dwm_cmus)
   - [dwm_mpc](#dwm_mpc)
+  - [dwm_spotify](#dwm_mpc)
   - [dwm_date](#dwm_date)
   - [dwm_mail](#dwm_mail)
   - [dwm_weather](#dwm_weather)
@@ -67,17 +68,25 @@ Displays information regarding memory, CPU temperature, and storage
 [🖥 MEM 1.3Gi/15Gi CPU 45C STO 2.3G/200G: 2%]
 ```
 ### dwm_cmus
-displays current cmus status, artist, track, position, duration, and shuffle
+Displays current cmus status, artist, track, position, duration, and shuffle
 ```
 [▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
 Dependencies: ```cmus```
 ### dwm_mpc
-displays current mpc status, artist, track, position, duration, and shuffle
+Displays current mpc status, artist, track, position, duration, and shuffle
 ```
 [▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
 Dependencies: ```mpc```
+### dwm_mpc
+Displays current Spotify status, artist, track, and duration
+Unfortunatley a method to display the track position and shuffle status have not been found
+```
+[▶ The Unicorns - Tuff Ghost 2:56]
+```
+Dependencies: ```spotify, playerctl```
+
 ### dwm_date
 Displays the current date and time
 ```
