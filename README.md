@@ -189,3 +189,4 @@ Code for some functions was modified from:
 * [@boylemic](https://github.com/boylemic/configs/blob/master/dwm_status)
 * [Parket Johnson](https://github.com/ronno/scripts/blob/master/xsetcmus)
 * [suckless.org](https://dwm.suckless.org/status_monitor/)
+* [@mcallistertyler95](https://github.com/mcallistertyler95/dwm-bar)
