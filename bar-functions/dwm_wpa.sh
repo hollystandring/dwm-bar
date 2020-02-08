@@ -1,4 +1,4 @@
-#!/bin/mksh
+#!/bin/sh
 
 dwm_wpa() {
    CONSTATE=$(wpa_cli status | sed -n '/wpa_state/s/^.*=//p')
