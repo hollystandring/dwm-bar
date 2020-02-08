@@ -16,7 +16,8 @@ A modular statusbar for dwm
   - [dwm_date](#dwm_date)
   - [dwm_mail](#dwm_mail)
   - [dwm_weather](#dwm_weather)
-  - [dwm_network](#dwm_network)
+  - [dwm_networkmanager](#dwm_networkmanager)
+  - [dwm_wpa](#dwm_wpa)
   - [dwm_vpn](#dwm_vpn)
   - [dwm_ccurse](#dwm_ccurse)
   - [dwm_transmission](#dwm_transmission)
@@ -102,12 +103,18 @@ Displays the current weather provided by [wttr.in](https://wttr.in)
 ```
 [☀ +20°C]
 ```
-### dwm_network
-Displays the current network connection, private IP, and public IP
+### dwm_networkmanager
+Displays the current network connection, private IP, and public IP using NetworkManager
 ```
 [🌐 enp7s0: 192.168.0.1/24 | 185.199.109.153]
 ```
 Dependencies: ```NetworkManager, curl```
+### dwm_wpa
+Displays the current network connection and private IP using wpa_cli
+```
+[襤 My-Wifi 192.168.0.3]
+```
+Dependancies: ```wpa_cli```
 ### dwm_vpn
 Displays the current VPN connection
 ```

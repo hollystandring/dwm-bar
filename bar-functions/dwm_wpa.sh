@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Dependancies: wpa_cli
+
 dwm_wpa() {
    CONSTATE=$(wpa_cli status | sed -n '/wpa_state/s/^.*=//p')
 
