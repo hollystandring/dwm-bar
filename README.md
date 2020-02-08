@@ -26,6 +26,7 @@ A modular statusbar for dwm
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
 - [Customizing](#customizing)
+- [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 ### dwm_alsa
 Displays the current master volume of ALSA
@@ -190,6 +191,8 @@ Whereas, if it is not set it will display:
 ```
 [MAIL 0]
 ```
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
 ## Acknowledgements
 Code for some functions was modified from:
 * [Klemens Nanni](https://notabug.org/kl3)
