@@ -22,6 +22,7 @@ A modular statusbar for dwm
   - [dwm_ccurse](#dwm_ccurse)
   - [dwm_transmission](#dwm_transmission)
   - [dwm_backlight](#dwm_backlight)
+  - [dwm_loadavg](#dwm_loadavg)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
@@ -140,6 +141,11 @@ Displays the current backlight level with xbacklight
 [☀ 80]
 ```
 Dependencies: ```xbacklight```
+### dwm_loadavg
+Displays the average system load
+```
+[⏱ 0.14 0.17 0.18]
+```
 ## Installation
 1. Clone and enter the repository:
 ```
