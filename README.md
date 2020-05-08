@@ -150,7 +150,7 @@ $ cd dwm-bar
 ```
 $ chmod +x dwm_bar.sh
 ```
-## Recomendations
+## Recommendations
 To make the most out of unicode support, consider using a font that inludes many unicode charachters. For example:
 * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 * [Siji](https://github.com/stark/siji)
