@@ -22,6 +22,7 @@ A modular statusbar for dwm
   - [dwm_ccurse](#dwm_ccurse)
   - [dwm_transmission](#dwm_transmission)
   - [dwm_backlight](#dwm_backlight)
+  - [dwm_connman](#dwm_connman)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
@@ -140,6 +141,12 @@ Displays the current backlight level with xbacklight
 [☀ 80]
 ```
 Dependencies: ```xbacklight```
+### dwm_connman
+Shows network information IP, SSID, WLan strength (if connected to WLan) using connman.
+```
+[🌐 192.169.189.12 HomeNetworkName 53%]
+```
+Dependencies: ```connman```
 ## Installation
 1. Clone and enter the repository:
 ```
