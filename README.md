@@ -23,6 +23,7 @@ A modular statusbar for dwm
   - [dwm_transmission](#dwm_transmission)
   - [dwm_backlight](#dwm_backlight)
   - [dwm_connman](#dwm_connman)
+  - [dwm_loadavg](#dwm_loadavg)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
@@ -147,6 +148,11 @@ Shows network information IP, SSID, WLan strength (if connected to WLan) using c
 [🌐 192.169.189.12 HomeNetworkName 53%]
 ```
 Dependencies: ```connman```
+### dwm_loadavg
+Displays the average system load
+```
+[⏱ 0.14 0.17 0.18]
+```
 ## Installation
 1. Clone and enter the repository:
 ```
