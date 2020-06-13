@@ -167,6 +167,7 @@ $ chmod +x dwm_bar.sh
 To make the most out of unicode support, consider using a font that inludes many unicode charachters. For example:
 * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 * [Siji](https://github.com/stark/siji)
+* [Font Awesome](https://fontawesome.com/)
 
 While not always neccessary, it's a good idea to specify these fonts in your dwm config.
 ## Quick Start
@@ -178,7 +179,7 @@ Most likely, you will need to change some values for functions to get them to wo
 If you would like your bar to be displayed when X starts, add this to your .xinitrc file before launching dwm. For example, if the script is located in /home/$USER/dwm-bar/:
 ```
 # Statusbar
-/home/$USER/dwm-bar/dwm_status.sh &
+/home/$USER/dwm-bar/dwm_bar.sh &
 
 # Start dwm
 exec dwm
