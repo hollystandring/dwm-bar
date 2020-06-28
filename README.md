@@ -104,6 +104,8 @@ Displays the current number of emails in an inbox
 ```
 ### dwm_weather
 Displays the current weather provided by [wttr.in](https://wttr.in)
+
+Please remember wttr.in has a limited number of requests, so this module may occasionally not be able to recieve weather information when experiencing high traffic.
 ```
 [☀ +20°C]
 ```
