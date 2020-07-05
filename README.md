@@ -86,11 +86,11 @@ Dependencies: ```mpc```
 ### dwm_spotify
 Displays current Spotify status, artist, track, and duration
 
-Unfortunatley a method to display the track position and shuffle status have not been found
+Either the official Spotify client or spotifyd can be used. Unfortunatley, only spotifyd can provide track position and shuffle status
 ```
-[▶ The Unicorns - Tuff Ghost 2:56]
+[▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
-Dependencies: ```spotify, playerctl```
+Dependencies: ```spotify/spotifyd, playerctl```
 
 ### dwm_date
 Displays the current date and time
