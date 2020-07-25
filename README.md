@@ -122,11 +122,11 @@ Displays the current network connection and private IP using wpa_cli
 ```
 Dependancies: ```wpa_cli```
 ### dwm_vpn
-Displays the current VPN connection
+Displays the current VPN connections with OpenVPN or Wireguard
 ```
 [🔒 Sweden - Stockholm]
 ```
-Dependencies: ```NetworkManager-openvpn```
+Dependencies: ```NetworkManager, NetworkManager-openvpn (for OpenVPN connections)```
 ### dwm_ccurse
 Displays the next appointment from calcurse
 ```
