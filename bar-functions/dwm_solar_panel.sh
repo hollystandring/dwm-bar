@@ -12,8 +12,8 @@
 
 dwm_solar_panel () {
 
-	INVERTER_IP="192.168.1.126"
-	PASSWORD="ciao1234"
+	INVERTER_IP="YOUR INVERTER IP"
+	PASSWORD="YOUR PASSWORD"
 
 
 	if [[ -f ~/.cache/solar_panel.cache ]];
