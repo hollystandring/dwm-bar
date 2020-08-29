@@ -12,8 +12,8 @@
 
 dwm_solar_panel () {
 
-	INVERTER_IP="INVERTER IP HERE"
-	PASSWORD="USER GROUP PASSWORD HERE"
+	INVERTER_IP="192.168.1.126"
+	PASSWORD="ciao1234"
 
 
 	if [[ -f ~/.cache/solar_panel.cache ]];
@@ -22,30 +22,28 @@ dwm_solar_panel () {
 		if [ "$SID" == "null" ];
 		then
 			#Getting session id
-			SID=`curl -s --location --request POST "http://$INVERTER_IP/dyn/login.json" \
-				--header 'Content-Type: text/plain' \
-				--data-raw "{"right":"usr","pass":"$PASSWORD"}" | jq .result.sid`
-			SID=${SID//\"}
+		SID=$( curl -s --location --request POST "http://$INVERTER_IP/dyn/login.json" \
+			--header 'Content-Type: text/plain' \
+			--data-raw "{\"right\":\"usr\",\"pass\":\""$PASSWORD\""}" | jq .result.sid)
+		SID=${SID//\"}
 		fi
 		#checks if it got a session token
-		if [ "$SID" != "" ];
+
+		if [ "$SID" != "" ] || [ "$SID" != "null" ];
 		then
 			echo $SID > ~/.cache/solar_panel.cache
 			WATTS=$(curl -s --location --request POST "http://$INVERTER_IP/dyn/getValues.json?sid=$SID" \
 				--header 'Content-Type: text/plain' \
-			--data-raw '{"destDev":[],"keys":["6100_00543100","6800_008AA200","6100_40263F00","6800_00832A00","6180_08214800","6180_08414900","6180_08522F00","6400_00543A00","6400_00260100","6800_08811F00","6400_00462E00"]}' | jq '.result."0156-76BC3EC6"."6100_40263F00"."1"[0].val')
+				--data-raw '{"destDev":[],"keys":["6100_00543100","6800_008AA200","6100_40263F00","6800_00832A00","6180_08214800","6180_08414900","6180_08522F00","6400_00543A00","6400_00260100","6800_08811F00","6400_00462E00"]}' | jq '.result."0156-76BC3EC6"."6100_40263F00"."1"[0].val')
 
-			if [ "$WATTS" == "" ];
+			if [ "$WATTS" == "" ] || [ "$WATTS" == "null" ];
 			then
 				echo "null" > ~/.cache/solar_panel.cache
 			else
-				if [ "$WATTS" == "null" ];
-				then
-					$WATTS=0
-				fi
 				WATTC=`bc <<< "scale=3; $WATTS / 1000"`
 				printf  "%s💡 $WATTC W %s" "$SEP1" "$SEP2"
 			fi
+
 		fi
 	else
 		touch ~/.cache/solar_panel.cache
