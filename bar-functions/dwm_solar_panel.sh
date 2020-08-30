@@ -29,7 +29,7 @@ dwm_solar_panel () {
 		fi
 		#checks if it got a session token
 
-		if [ "$SID" != "" ] || [ "$SID" != "null" ];
+		if [ "$SID" != "" ] && [ "$SID" != "null" ];
 		then
 			echo $SID > ~/.cache/solar_panel.cache
 			WATTS=$(curl -s --location --request POST "http://$INVERTER_IP/dyn/getValues.json?sid=$SID" \
