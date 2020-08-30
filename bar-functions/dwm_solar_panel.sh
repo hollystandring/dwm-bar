@@ -40,8 +40,7 @@ dwm_solar_panel () {
 			then
 				echo "null" > ~/.cache/solar_panel.cache
 			else
-				WATTC=`bc <<< "scale=3; $WATTS / 1000"`
-				printf  "%s💡 $WATTC W %s" "$SEP1" "$SEP2"
+				printf  "%s💡 $WATTS W %s" "$SEP1" "$SEP2"
 			fi
 
 		fi
