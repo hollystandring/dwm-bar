@@ -25,6 +25,7 @@ A modular statusbar for dwm
   - [dwm_backlight](#dwm_backlight)
   - [dwm_connman](#dwm_connman)
   - [dwm_loadavg](#dwm_loadavg)
+  - [dwm_solar_panel(#dwm_solar_panel)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
@@ -156,7 +157,7 @@ Displays the average system load
 ```
 [⏱ 0.14 0.17 0.18]
 ```
-### dwm_solar_panels
+### dwm_solar_panel
 Displays how much power is being produced from your solar panels
 ```
 [💡 3.012 W ]
