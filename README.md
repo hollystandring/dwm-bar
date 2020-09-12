@@ -156,6 +156,11 @@ Displays the average system load
 ```
 [⏱ 0.14 0.17 0.18]
 ```
+### dwm_solar_panels
+Displays how much power is being produced from your solar panels
+```
+[💡 3.012 W ]
+```
 ## Installation
 1. Clone and enter the repository:
 ```
