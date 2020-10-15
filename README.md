@@ -121,7 +121,7 @@ Displays the current network connection and private IP using wpa_cli
 ```
 [襤 My-Wifi 192.168.0.3]
 ```
-Dependancies: ```wpa_cli```
+Dependencies: ```wpa_cli```
 ### dwm_vpn
 Displays the current VPN connections with OpenVPN or Wireguard
 ```
