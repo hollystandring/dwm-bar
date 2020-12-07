@@ -7,7 +7,7 @@
 # Dependencies: pamixer
 
 dwm_pulse () {
-    VOL=$(pamixer --get-volume-human | tr -d '%')
+    VOL=$(pamixer --get-volume)
     
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
