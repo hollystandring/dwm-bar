@@ -25,6 +25,7 @@ A modular statusbar for dwm
   - [dwm_backlight](#dwm_backlight)
   - [dwm_connman](#dwm_connman)
   - [dwm_loadavg](#dwm_loadavg)
+  - [dwm_currency](#dwm_currency)
   - [dwm_solar_panel(#dwm_solar_panel)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
@@ -162,6 +163,13 @@ Displays how much power is being produced from your solar panels
 ```
 [💡 3.012 W ]
 ```
+### dwm_currency
+Displays the current rate of your currency in comparison to the USD provided by [rate.sx](http://rate.sx/)
+```
+[💡 1.225 ]
+```
+Dependencies: ```curl```
+
 ## Installation
 1. Clone and enter the repository:
 ```
