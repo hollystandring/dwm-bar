@@ -42,6 +42,7 @@ export SEP2="]"
 . "$DIR/bar-functions/dwm_date.sh"
 . "$DIR/bar-functions/dwm_connman.sh"
 . "$DIR/bar-functions/dwm_loadavg.sh"
+. "$DIR/bar-functions/dwm_currency.sh"
 
 # Update dwm status bar every second
 while true
@@ -69,6 +70,7 @@ do
     dispstr="$dispstr$(dwm_ccurse)"
     dispstr="$dispstr$(dwm_date)"
     dispstr="$dispstr$(dwm_loadavg)"
+    dispstr="$dispstr$(dwm_currency)"
 
     xsetroot -name "$dispstr"
     sleep 1
