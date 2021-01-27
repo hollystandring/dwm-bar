@@ -15,13 +15,11 @@ dwm_networkmanager () {
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
     PUBLIC=$(curl -s https://ipinfo.io/ip)
 
-    printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "🌐 %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
+        export __DWM_BAR_NETWORKMANAGER__="${SEP1}🌐 ${CONNAME} ${PRIVATE} ${PUBLIC}${SEP2}"
     else
-        printf "NET %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
+        export __DWM_BAR_NETWORKMANAGER__="${SEP1}NET ${CONNAME} ${PRIVATE} ${PUBLIC}${SEP2}"
     fi
-    printf "%s\n" "$SEP2"
 }
 
 dwm_networkmanager
