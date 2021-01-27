@@ -26,7 +26,7 @@ A modular statusbar for dwm
   - [dwm_connman](#dwm_connman)
   - [dwm_loadavg](#dwm_loadavg)
   - [dwm_currency](#dwm_currency)
-  - [dwm_solar_panel(#dwm_solar_panel)
+  - [dwm_solar_panel](#dwm_solar_panel)
 - [Installation](#installation)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
