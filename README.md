@@ -88,7 +88,7 @@ Dependencies: ```mpc```
 ### dwm_spotify
 Displays current Spotify status, artist, track, and duration
 
-Either the official Spotify client or spotifyd can be used. Unfortunatley, only spotifyd can provide track position and shuffle status
+Either the official Spotify client or spotifyd can be used. Unfortunately, only spotifyd can provide track position and shuffle status
 ```
 [▶ The Unicorns - Tuff Ghost 0:43/2:56 🔀]
 ```
@@ -181,12 +181,12 @@ $ cd dwm-bar
 $ chmod +x dwm_bar.sh
 ```
 ## Recommendations
-To make the most out of unicode support, consider using a font that inludes many unicode charachters. For example:
+To make the most out of Unicode support, consider using a font that includes many Unicode characters. For example:
 * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 * [Siji](https://github.com/stark/siji)
 * [Font Awesome](https://fontawesome.com/)
 
-While not always neccessary, it's a good idea to specify these fonts in your dwm config.
+While not always necessary, it's a good idea to specify these fonts in your dwm config.
 ## Quick Start
 Simply run the script and dwm should display your bar:
 ```
@@ -202,8 +202,8 @@ If you would like your bar to be displayed when X starts, add this to your .xini
 exec dwm
 ```
 ## Customizing
-dwm-bar is completley modular, meaning you can mix and match functions to your hearts content. It's functions are located in the bar-functions/ subdirectory and included in dwm_bar.sh
-If you want to make your own function, for example dwm_myfunction.sh, you should create it in the bar-functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
+dwm-bar is completely modular, meaning you can mix and match functions to your heart's content. It's functions are located in the bar-functions/ subdirectory and included in dwm_bar.sh
+If you want to make your own function, for example, dwm_myfunction.sh, you should create it in the bar-functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
 ```
 # Import the modules
 . "$DIR/bar-functions/dwm_myfucntion"
@@ -214,7 +214,7 @@ do
     sleep 1
 done
 ```
-You can also decide to use unicode or plaintext identifiers for functions by altering the ```$IDENTIFIER``` value. For example, set to ```"unicode"```, ```dwm_mail``` will display:
+You can also decide to use Unicode or plaintext identifiers for functions by altering the ```$IDENTIFIER``` value. For example, set to ```"unicode"```, ```dwm_mail``` will display:
 ```
 [📫 0]
 ```
