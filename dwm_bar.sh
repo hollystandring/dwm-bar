@@ -58,30 +58,37 @@ parallelize &
 # Update dwm status bar every second
 while true
 do
-    # Append results of each func one by one to a string
-    dispstr=""
-    dispstr="$dispstr$(dwm_connman)"
-    dispstr="$dispstr$(dwm_countdown)"
-    dispstr="$dispstr$(dwm_alarm)"
-    dispstr="$dispstr$(dwm_transmission)"
-    dispstr="$dispstr$(dwm_cmus)"
-    dispstr="$dispstr$(dwm_mpc)"
-    dispstr="$dispstr$(dwm_spotify)"
-    dispstr="$dispstr$(dwm_resources)"
-    dispstr="$dispstr$(dwm_battery)"
-    dispstr="$dispstr$(dwm_mail)"
-    dispstr="$dispstr$(dwm_backlight)"
-    dispstr="$dispstr$(dwm_alsa)"
-    dispstr="$dispstr$(dwm_pulse)"
-    dispstr="$dispstr${__DWM_BAR_WEATHER__}"
-    dispstr="$dispstr$(dwm_vpn)"
-    dispstr="$dispstr${__DWM_BAR_NETWORKMANAGER__}"
-    dispstr="$dispstr$(dwm_keyboard)"
-    dispstr="$dispstr$(dwm_ccurse)"
-    dispstr="$dispstr$(dwm_date)"
-    dispstr="$dispstr$(dwm_loadavg)"
-    dispstr="$dispstr$(dwm_currency)"
+    # Append results of each func one by one to the upperbar string
+    upperbar=""
+    upperbar="$upperbar$(dwm_connman)"
+    upperbar="$upperbar$(dwm_countdown)"
+    upperbar="$upperbar$(dwm_alarm)"
+    upperbar="$upperbar$(dwm_transmission)"
+    upperbar="$upperbar$(dwm_cmus)"
+    upperbar="$upperbar$(dwm_mpc)"
+    upperbar="$upperbar$(dwm_spotify)"
+    upperbar="$upperbar$(dwm_resources)"
+    upperbar="$upperbar$(dwm_battery)"
+    upperbar="$upperbar$(dwm_mail)"
+    upperbar="$upperbar$(dwm_backlight)"
+    upperbar="$upperbar$(dwm_alsa)"
+    upperbar="$upperbar$(dwm_pulse)"
+    upperbar="$upperbar${__DWM_BAR_WEATHER__}"
+    upperbar="$upperbar$(dwm_vpn)"
+    upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
+    upperbar="$upperbar$(dwm_keyboard)"
+    upperbar="$upperbar$(dwm_ccurse)"
+    upperbar="$upperbar$(dwm_date)"
+    upperbar="$upperbar$(dwm_loadavg)"
+    upperbar="$upperbar$(dwm_currency)"
+   
+    # Append results of each func one by one to the lowerbar string
+    lowerbar=""
 
-    xsetroot -name "$dispstr"
+    
+    xsetroot -name "$upperbar"
+    
+    # Uncomment the line below to enable the lowerbar 
+#    xsetroot -name "$upperbar;$lowerbar"
     sleep 1
 done
