@@ -28,6 +28,7 @@ A modular statusbar for dwm
   - [dwm_currency](#dwm_currency)
   - [dwm_solar_panel](#dwm_solar_panel)
 - [Installation](#installation)
+- [Configuration](#configuration)
 - [Reccomendations](#reccomendations)
 - [Usage](#usage)
 - [Customizing](#customizing)
@@ -180,6 +181,24 @@ $ cd dwm-bar
 ```
 $ chmod +x dwm_bar.sh
 ```
+
+## Configuration
+dwm-bar supports the [extrabar](https://dwm.suckless.org/patches/status2d/dwm-status2d-extrabar-6.2.diff) patch for dwm. This allows the user to add a second status bar at the bottom of the screen. To add the second bar:
+
+1. Patch dwm with the the [extrabar](https://dwm.suckless.org/patches/status2d/dwm-status2d-extrabar-6.2.diff) plugin
+2. Comment out the line ```xsetroot -name "$upperbar"``` in ```dwm_bar.sh```
+3. Uncomment the line ```xsetroot -name "$upperbar;$lowerbar"``` in ```dwm_bar.sh```
+4. Append functions underneath ```upperbar=""``` and ```lowerbar=""```. For example:
+```
+# Append results of each func one by one to the upperbar string
+upperbar=""
+upperbar="$upperbar$(dwm_myupperfunction)"
+
+# Append results of each func one by one to the lowerbar string
+lowerbar=""
+lowerbar="$lowerbar$(dwm_mylowerfunction)"
+```
+
 ## Recommendations
 To make the most out of Unicode support, consider using a font that includes many Unicode characters. For example:
 * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
