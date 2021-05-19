@@ -177,6 +177,16 @@ Dependencies: ```curl```
 $ git clone https://github.com/joestandring/dwm-bar
 $ cd dwm-bar
 ```
+2. Install Dependencies from dep/YourDisto.txt
+
+  * For Arch Linux 
+
+```
+$ sudo pacman -S $(dep/arch.txt)
+```
+
+> :warning: Currently, only arch linux supports this feature. Dependency Lists for other Distributions are to be aded in future.
+
 2. Make the script executable
 ```
 $ chmod +x dwm_bar.sh
