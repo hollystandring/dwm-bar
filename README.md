@@ -187,7 +187,7 @@ $ sudo pacman -S $(dep/arch.txt)
 
 > :warning: Currently, only arch linux supports this feature. Dependency Lists for other Distributions are to be aded in future.
 
-2. Make the script executable
+3. Make the script executable
 ```
 $ chmod +x dwm_bar.sh
 ```
