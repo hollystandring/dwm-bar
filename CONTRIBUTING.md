@@ -24,3 +24,5 @@ The most important part of this project is to have fun using shell scripts. I cr
 - [Current Functions])(#current-functions)
   -[plugin_name](#plugin_name)
 ```
+## Edditing Dependency Listings
+* When adding a plugin, please add your dependencies to the dependency listing file in dep folder.
