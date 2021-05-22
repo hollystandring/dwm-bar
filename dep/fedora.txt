@@ -1,0 +1,14 @@
+alsa-utils
+setxkbmap
+mpc
+wpa_supplicant
+NetworkManager
+NetworkManager-openvpn
+calcurse
+transmission-remote-gtk
+xbacklight
+connman
+connman-devel
+curl
+playerctl
+playerctl-devel
