@@ -185,7 +185,13 @@ $ cd dwm-bar
 $ sudo pacman -S $(dep/arch.txt)
 ```
 
-> :warning: Currently, only arch linux supports this feature. Dependency Lists for other Distributions are to be aded in future.
+  * For Fedora Linux
+
+```
+$ sudo dnf install $(dep/fedora.txt)
+```
+
+> :warning: There are no dnf packages for [spotyfyd](https://github.com/Spotifyd/spotifyd), [pamixer](https://github.com/cdemoulins/pamixer) and [cmus](https://github.com/cmus/cmus). If you want to utilise these packages, please install them manually as shown in the corresponding gihub repos.
 
 3. Make the script executable
 ```
