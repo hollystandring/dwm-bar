@@ -1,6 +1,6 @@
 # dwm-bar
 A modular statusbar for dwm
-![screenshot](sshot.png)
+![screenshot](https://raw.githubusercontent.com/joestandring/dwm-bar/master/sshot.png)
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J11S7DZ)
 ## Table of Contents
 - [Current Functions](#current-functions)
