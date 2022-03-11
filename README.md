@@ -2,6 +2,12 @@
 A modular statusbar for dwm
 ![screenshot](https://raw.githubusercontent.com/joestandring/dwm-bar/master/sshot.png)
 ## Table of Contents
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [Enabling Functions](#enabling-functions)
+  - [Refresh Rate](#refresh-rate)
+  - [Configuring Functions](#configuring-functions)
+  - [Identifiers](#identifiers)
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
   - [dwm_pulse](#dwm_pulse)
@@ -26,13 +32,86 @@ A modular statusbar for dwm
   - [dwm_loadavg](#dwm_loadavg)
   - [dwm_currency](#dwm_currency)
   - [dwm_solar_panel](#dwm_solar_panel)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Reccomendations](#reccomendations)
-- [Usage](#usage)
-- [Customizing](#customizing)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
+
+## Installation
+1. Clone and enter the repository:
+```
+$ git clone https://github.com/joestandring/dwm-bar
+$ cd dwm-bar
+```
+2. (Optional) Install Dependencies from ```dep/YourDisto.txt```. This will install dependencies for ALL functions so consider excluding ones you do not plan to use. These can be found at the top of each bar function.
+```
+$ sudo xbps-install -S $(cat dep/void.txt) # Void
+$ sudo pacman -S $(dep/arch.txt)           # Arch
+$ sudo dnf install $(dep/fedora.txt)       # Fedora
+```
+> :warning: There are no dnf packages for [spotifyd](https://github.com/Spotifyd/spotifyd), [pamixer](https://github.com/cdemoulins/pamixer) and [cmus](https://github.com/cmus/cmus). If you want to utilise these packages, please install them manually as shown in the corresponding gihub repos.
+3. (Optional) If you plan to use unicode identifiers, you should install a font which includes these ([Nerd Fonts](https://github.com/ryanoasis/nerd-fonts), [siji](https://github.com/stark/siji))
+4. Enable/disable desired functions (see [Configuration](#configuration)).
+5. Run the script
+```
+./dwm_bar.sh
+```
+
+## Configuration
+dwm-bar will require some setup before it can be used.
+### Enabling Functions
+Functions can be enabled by adding them to the import and upperbar variable in dwm_bar.sh. By default, all available functions will be commented here. If you are using the [extrabar](https://dwm.suckless.org/patches/extrabar/) patch, functions can also be added to lowerbar to appear on the bottom of the screen. Some more intensive functions are parallelized to prevent the bar freezing. These are imported the same as regular functions but added to the ```parallelize()``` function first. These use different names to regular functions and are commented out by default in dwm_bar.sh.
+
+To enable dwm_battery and dwm_backlight on the top bar and dwm_pulse and dwm_weather (parallelized) on the bottom bar, for example, you should use:
+```
+# Import the modules
+. "$DIR/bar-functions/dwm_battery.sh"
+. "$DIR/bar-functions/dwm_backlight.sh"
+. "$DIR/bar-functions/dwm_pulse.sh"
+. "$DIR/bar-functions/dwm_weather.sh"
+
+parallelize() {
+    while true
+    do
+        printf "Running parallel processes\n"
+        dwm_weather &
+        sleep 5
+    done
+}
+parallelize &
+
+# Update dwm status bar every second
+while true
+do
+    # Append results of each func one by one to the upperbar string
+    upperbar=""
+    upperbar="$upperbar$(dwm_battery)"
+    upperbar="$upperbar$(dwm_backlight)"
+   
+    # Append results of each func one by one to the lowerbar string
+    lowerbar=""
+    lowerbar="$lowerbar$(dwm_pulse)"
+    lowerbar="$lowerbar$(__DWM_BAR_WEATHER__)"
+    
+    #xsetroot -name "$upperbar"
+    
+    # Uncomment the line below to enable the lowerbar 
+    xsetroot -name "$upperbar;$lowerbar"
+    sleep 1
+done
+```
+### Refresh rate
+If updating the bar every second is an issue, you can change the ```sleep``` amount of both regular and parallelized functions in dwm_bar.sh.
+### Configuring functions
+Some functions, such as dwm_weather require additional setup and will be outlined with a comment where this is the case.
+### Identifiers
+Unicode or plaintext identifiers can be used by altering the ```$IDENTIFIER``` value in dwm_bar.sh. For example, when set to ```"unicode"```, dwm_mail will display:
+```
+[📫 0]
+```
+Otherwise, when not set it will display:
+```
+[MAIL 0]
+```
+## Current Functions
 ### dwm_alsa
 Displays the current master volume of ALSA
 ```
@@ -169,99 +248,6 @@ Displays the current rate of your currency in comparison to the USD provided by 
 [💡 1.225 ]
 ```
 Dependencies: ```curl```
-
-## Installation
-1. Clone and enter the repository:
-```
-$ git clone https://github.com/joestandring/dwm-bar
-$ cd dwm-bar
-```
-2. (Optional) Install Dependencies from ```dep/YourDisto.txt```. This will install dependencies for ALL functions so consider excluding ones you do not plan to use. These can be found at the top of each bar function.
-
-  * For Void Linux
-
-```
-$ sudo xbps-install -S $(cat dep/void.txt)
-```
-
-  * For Arch Linux 
-
-```
-$ sudo pacman -S $(dep/arch.txt)
-```
-
-  * For Fedora Linux
-
-```
-$ sudo dnf install $(dep/fedora.txt)
-```
-
-> :warning: There are no dnf packages for [spotifyd](https://github.com/Spotifyd/spotifyd), [pamixer](https://github.com/cdemoulins/pamixer) and [cmus](https://github.com/cmus/cmus). If you want to utilise these packages, please install them manually as shown in the corresponding gihub repos.
-
-3. Make the script executable
-```
-$ chmod +x dwm_bar.sh
-```
-
-## Configuration
-dwm-bar supports the [extrabar](https://dwm.suckless.org/patches/status2d/dwm-status2d-extrabar-6.2.diff) patch for dwm. This allows the user to add a second status bar at the bottom of the screen. To add the second bar:
-
-1. Patch dwm with the the [extrabar](https://dwm.suckless.org/patches/status2d/dwm-status2d-extrabar-6.2.diff) plugin
-2. Comment out the line ```xsetroot -name "$upperbar"``` in ```dwm_bar.sh```
-3. Uncomment the line ```xsetroot -name "$upperbar;$lowerbar"``` in ```dwm_bar.sh```
-4. Append functions underneath ```upperbar=""``` and ```lowerbar=""```. For example:
-```
-# Append results of each func one by one to the upperbar string
-upperbar=""
-upperbar="$upperbar$(dwm_myupperfunction)"
-
-# Append results of each func one by one to the lowerbar string
-lowerbar=""
-lowerbar="$lowerbar$(dwm_mylowerfunction)"
-```
-
-## Recommendations
-To make the most out of Unicode support, consider using a font that includes many Unicode characters. For example:
-* [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
-* [Siji](https://github.com/stark/siji)
-* [Font Awesome](https://fontawesome.com/)
-
-While not always necessary, it's a good idea to specify these fonts in your dwm config.
-## Quick Start
-Simply run the script and dwm should display your bar:
-```
-$ ./dwm_bar.sh
-```
-Most likely, you will need to change some values for functions to get them to work - these are outlined with a comment for functions where this is likely the case.
-If you would like your bar to be displayed when X starts, add this to your .xinitrc file before launching dwm. For example, if the script is located in /home/$USER/dwm-bar/:
-```
-# Statusbar
-/home/$USER/dwm-bar/dwm_bar.sh &
-
-# Start dwm
-exec dwm
-```
-## Customizing
-dwm-bar is completely modular, meaning you can mix and match functions to your heart's content. It's functions are located in the bar-functions/ subdirectory and included in dwm_bar.sh
-If you want to make your own function, for example, dwm_myfunction.sh, you should create it in the bar-functions/ subdirectory before including it in dwm_bar.sh and adding it to the xsetroot command:
-```
-# Import the modules
-. "$DIR/bar-functions/dwm_myfucntion"
-
-while true
-do
-    xsetroot -name "$(dwm_myfunction)"
-    sleep 1
-done
-```
-You can also decide to use Unicode or plaintext identifiers for functions by altering the ```$IDENTIFIER``` value. For example, set to ```"unicode"```, ```dwm_mail``` will display:
-```
-[📫 0]
-```
-Whereas, if it is not set it will display:
-```
-[MAIL 0]
-```
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
 ## Acknowledgements
