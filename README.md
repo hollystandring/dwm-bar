@@ -176,7 +176,13 @@ Dependencies: ```curl```
 $ git clone https://github.com/joestandring/dwm-bar
 $ cd dwm-bar
 ```
-2. Install Dependencies from dep/YourDisto.txt
+2. (Optional) Install Dependencies from ```dep/YourDisto.txt```. This will install dependencies for ALL functions so consider excluding ones you do not plan to use. These can be found at the top of each bar function.
+
+  * For Void Linux
+
+```
+$ sudo xbps-install -S $(cat dep/void.txt)
+```
 
   * For Arch Linux 
 
