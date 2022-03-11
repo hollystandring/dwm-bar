@@ -8,12 +8,13 @@
 
 dwm_cmus () {
     if ps -C cmus > /dev/null; then
-        ARTIST=$(cmus-remote -Q | grep -a '^tag artist' | awk '{gsub("tag artist ", "");print}')
-        TRACK=$(cmus-remote -Q | grep -a '^tag title' | awk '{gsub("tag title ", "");print}')
-        POSITION=$(cmus-remote -Q | grep -a '^position' | awk '{gsub("position ", "");print}')
-        DURATION=$(cmus-remote -Q | grep -a '^duration' | awk '{gsub("duration ", "");print}')
-        STATUS=$(cmus-remote -Q | grep -a '^status' | awk '{gsub("status ", "");print}')
-        SHUFFLE=$(cmus-remote -Q | grep -a '^set shuffle' | awk '{gsub("set shuffle ", "");print}')
+        CMUSDATA=$(cmus-remote -Q)
+        ARTIST=$(echo "$CMUSDATA" | grep -w '^tag artist' | awk '{gsub("tag artist ", "");print}')
+        TRACK=$(echo "$CMUSDATA" | grep -w '^tag title' | awk '{gsub("tag title ", "");print}')
+        POSITION=$(echo "$CMUSDATA" | grep -w '^position' | awk '{gsub("position ", "");print}')
+        DURATION=$(echo "$CMUSDATA" | grep -w '^duration' | awk '{gsub("duration ", "");print}')
+        STATUS=$(echo "$CMUSDATA" | grep -w '^status' | awk '{gsub("status ", "");print}')
+        SHUFFLE=$(echo "$CMUSDATA" | grep -w '^set shuffle' | awk '{gsub("set shuffle ", "");print}')
 
         if [ "$IDENTIFIER" = "unicode" ]; then
             if [ "$STATUS" = "playing" ]; then
