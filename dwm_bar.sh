@@ -2,91 +2,84 @@
 
 # A modular status bar for dwm
 # Joe Standring <git@joestandring.com>
+# https://github.com/joestandring/dwm-bar
 # GNU GPLv3
 
 # Dependencies: xorg-xsetroot
 
-# Import functions with "$include /route/to/module"
-# It is recommended that you place functions in the subdirectory ./bar-functions and use: . "$DIR/bar-functions/dwm_example.sh"
-
-# Store the directory the script is running from
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 
-# Change the appearance of the module identifier. if this is set to "unicode", then symbols will be used as identifiers instead of text. E.g. [📪 0] instead of [MAIL 0].
-# Requires a font with adequate unicode character support
-export IDENTIFIER="unicode"
+HELPSTR="Usage: dwm-bar [OPTION]...
+  -h Display this message
+  -c Specify config directory. Must contain a 'bar.conf' and modules directory
+     otherwise '~/.config/dwm-bar' or files in the same directory as the script
+     will be used. If no config can be found, default values are used.
+  -r How many seconds between bar refreshes. Overwrites config"
 
-# Change the charachter(s) used to seperate modules. If two are used, they will be placed at the start and end.
-export SEP1="["
-export SEP2="]"
+MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
+REFRESH_RATE=1
 
-# Import the modules
-#. "$DIR/bar-functions/dwm_countdown.sh"
-#. "$DIR/bar-functions/dwm_alarm.sh"
-#. "$DIR/bar-functions/dwm_transmission.sh"
-#. "$DIR/bar-functions/dwm_cmus.sh"
-#. "$DIR/bar-functions/dwm_mpc.sh"
-#. "$DIR/bar-functions/dwm_spotify.sh"
-#. "$DIR/bar-functions/dwm_resources.sh"
-#. "$DIR/bar-functions/dwm_battery.sh"
-#. "$DIR/bar-functions/dwm_mail.sh"
-#. "$DIR/bar-functions/dwm_backlight.sh"
-#. "$DIR/bar-functions/dwm_alsa.sh"
-#. "$DIR/bar-functions/dwm_pulse.sh"
-#. "$DIR/bar-functions/dwm_weather.sh"
-#. "$DIR/bar-functions/dwm_vpn.sh"
-#. "$DIR/bar-functions/dwm_networkmanager.sh"
-#. "$DIR/bar-functions/dwm_keyboard.sh"
-#. "$DIR/bar-functions/dwm_ccurse.sh"
-#. "$DIR/bar-functions/dwm_date.sh"
-#. "$DIR/bar-functions/dwm_connman.sh"
-#. "$DIR/bar-functions/dwm_loadavg.sh"
-#. "$DIR/bar-functions/dwm_currency.sh"
+CONF="$DIR"
+if [ -d ~/.config/dwm-bar/modules ]; then
+    if [ -f ~/.config/dwm-bar/bar.conf ]; then
+        CONF=~/.config/dwm-bar/
+    fi
+fi
 
-parallelize() {
-    while true
-    do
-        printf "Running parallel processes\n"
-        #dwm_weather &
-        #dwm_networkmanager &
-        sleep 5
-    done
-}
-parallelize &
+while getopts ":hc:r:" OPT; do
+    case "$OPT" in
+        h)
+            printf "%s\n\n%s\n%s\n%s\n\n%s\n" \
+                "A modular status bar for dwm" \
+                "Joe Standring <git@joestandring.com>"\
+                "https://github.com/joestandring/dwm-bar"\
+                "GNU GPLv3"\
+                "$HELPSTR"
+            exit 0
+            ;;
+        c)
+            if [ -d "$OPTARG/modules" ]; then
+                if [ -f "$OPTARG/bar.conf" ]; then
+                    CONF="$OPTARG"
+                else
+                    printf "The sepcified config directory does not contain 'bar.conf'" >&2
+                    exit 1
+                fi
+            else
+                printf "The specified config directory does not contain a 'modules' directory" >&2
+                exit 1
+            fi
+            ;;
+        r)
+            if [ "$OPTARG" -ge 0 ] 2> /dev/null; then
+                ARG_REFRESH_RATE="$OPTARG"
+            else 
+                printf "Refresh rate must be a positive integer" >&2
+                exit 1
+            fi
+            ;;
+        *)
+            printf "dwm-bar: invalid option -- %s\n\n%s\n" "$OPTARG" "$HELPSTR"
+            exit 1
+            ;;
+    esac
+done
 
-# Update dwm status bar every second
-while true
-do
-    # Append results of each func one by one to the upperbar string
-    upperbar=""
-    #upperbar="$upperbar$(dwm_connman)"
-    #upperbar="$upperbar$(dwm_countdown)"
-    #upperbar="$upperbar$(dwm_alarm)"
-    #upperbar="$upperbar$(dwm_transmission)"
-    #upperbar="$upperbar$(dwm_cmus)"
-    #upperbar="$upperbar$(dwm_mpc)"
-    #upperbar="$upperbar$(dwm_spotify)"
-    #upperbar="$upperbar$(dwm_resources)"
-    #upperbar="$upperbar$(dwm_battery)"
-    #upperbar="$upperbar$(dwm_mail)"
-    #upperbar="$upperbar$(dwm_backlight)"
-    #upperbar="$upperbar$(dwm_alsa)"
-    #upperbar="$upperbar$(dwm_pulse)"
-    #upperbar="$upperbar${__DWM_BAR_WEATHER__}"
-    #upperbar="$upperbar$(dwm_vpn)"
-    #upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
-    #upperbar="$upperbar$(dwm_keyboard)"
-    #upperbar="$upperbar$(dwm_ccurse)"
-    #upperbar="$upperbar$(dwm_date)"
-    #upperbar="$upperbar$(dwm_loadavg)"
-    #upperbar="$upperbar$(dwm_currency)"
-   
-    # Append results of each func one by one to the lowerbar string
-    lowerbar=""
-    
-    xsetroot -name "$upperbar"
-    # Uncomment the line below to enable the lowerbar 
-    #xsetroot -name "$upperbar;$lowerbar"
-    sleep 1
+printf "Loading configuration at %s\n" "$CONF"
+if [ -f "$CONF/bar.conf" ]; then
+    . "$CONF/bar.conf"
+else
+    printf "No bar.conf found, using default options\n"
+fi
+
+if [ "$ARG_REFRESH_RATE" != "" ]; then
+    REFRESH_RATE="$ARG_REFRESH_RATE"
+fi
+
+. "$CONF/modules/dwm_date.sh"
+
+while true; do
+    xsetroot -name "$(eval "$MOD_1")   "
+    sleep "$REFRESH_RATE"
 done
