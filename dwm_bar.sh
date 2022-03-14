@@ -7,9 +7,11 @@
 
 # Dependencies: xorg-xsetroot
 
+# Get the directory this script is running from
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 
+# Messag displayed when entering invalid argument or when -h used
 HELPSTR="Usage: dwm-bar [OPTION]...
   -h Display this message
   -c Specify config directory. Must contain a 'bar.conf' and modules directory
@@ -17,9 +19,11 @@ HELPSTR="Usage: dwm-bar [OPTION]...
      will be used. If no config can be found, default values are used.
   -r How many seconds between bar refreshes. Overwrites config"
 
+# Default values used when no config provided
 MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
 REFRESH_RATE=1
 
+# Check the user's .config for a modules directory and bar.conf
 CONF="$DIR"
 if [ -d ~/.config/dwm-bar/modules ]; then
     if [ -f ~/.config/dwm-bar/bar.conf ]; then
@@ -78,8 +82,13 @@ if [ "$ARG_REFRESH_RATE" != "" ]; then
 fi
 
 . "$CONF/modules/dwm_date.sh"
+. "$CONF/modules/dwm_pulse.sh"
 
 while true; do
-    xsetroot -name "$(eval "$MOD_1")   "
+    BAR=""
+    BAR="$BAR$(eval "$MOD_1")"
+    BAR="$BAR$(eval "$MOD_2")"
+
+    xsetroot -name "$BAR  "
     sleep "$REFRESH_RATE"
 done
