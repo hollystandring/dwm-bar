@@ -73,15 +73,11 @@ dwm_pulse() {
                 ;;
             # Apply colors to the identifier and reset
             c)
-                IDEN_COL_FG="^c$(printf "%s" "$OPTARG" | cut -d' ' -f1)^"
-                IDEN_COL_BG="^b$(printf "%s" "$OPTARG" | cut -d' ' -f2)^ "
-                IDEN_COL_RESET="^d^"
+                set_iden_colors "$OPTARG"
                 ;;
             # Apply colors to the main module body and reset
             C)
-                DATA_COL_FG="^c$(printf "%s" "$OPTARG" | cut -d' ' -f1)^"
-                DATA_COL_BG="^b$(printf "%s" "$OPTARG" | cut -d' ' -f2)^ "
-                DATA_COL_RESET=" ^d^"
+                set_data_colors "$OPTARG"
                 ;;
         esac
     done

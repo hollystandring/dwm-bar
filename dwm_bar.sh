@@ -31,6 +31,40 @@ color_valid() {
     fi 
 }
 
+set_iden_colors() {
+    HEX_1="$(printf "%s" "$1" | cut -d' ' -f1)"
+    HEX_2="$(printf "%s" "$1" | cut -d' ' -f2)"
+
+    # Check if colors are valid
+    if [ "$HEX_1" != "" ]; then
+        color_valid "${HEX_1#?}"
+    fi 
+    if [ "$HEX_2" != "" ]; then
+        color_valid "${HEX_2#?}"
+    fi 
+
+    IDEN_COL_FG="^c$HEX_1^"
+    IDEN_COL_BG="^b$HEX_2^ "
+    IDEN_COL_RESET="^d^"
+}
+
+set_data_colors() {
+    HEX_1="$(printf "%s" "$1" | cut -d' ' -f1)"
+    HEX_2="$(printf "%s" "$1" | cut -d' ' -f2)"
+
+    # Check if colors are valid
+    if [ "$HEX_1" != "" ]; then
+        color_valid "${HEX_1#?}"
+    fi 
+    if [ "$HEX_2" != "" ]; then
+        color_valid "${HEX_2#?}"
+    fi 
+
+    DATA_COL_FG="^c$HEX_1^"
+    DATA_COL_BG="^b$HEX_2^ "
+    DATA_COL_RESET="^d^ "
+}
+
 # Get the directory this script is running from
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
