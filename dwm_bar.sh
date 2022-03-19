@@ -72,9 +72,10 @@ DIR=$(dirname "$LOC")
 # Messag displayed when entering invalid argument or when -h used
 HELP="Usage: dwm-bar [OPTION]...
   -h Display this message.
-  -c Specify config directory. Must contain a 'bar.conf' and modules directory
-     otherwise '~/.config/dwm-bar' or files in the same directory as the script
-     will be used. If no config can be found, default values are used.
+  -c Specify config file location, otherwise '~/.config/dwm-bar/bar.conf', a
+     'bar.conf' in the script directory, or default values will be used.
+  -m Specify modules directory, otherwise '/usr/local/share/dwm-bar-modules/'
+     or 'modules' in the script directory will be used.
   -r How many seconds between main bar refreshes. Individual modules use their
      own. Overrides config.
   -x Kill running instances of dwm-bar."
@@ -84,15 +85,21 @@ MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
 REFRESH_RATE=1
 
 # Check the user's .config for a modules directory and bar.conf
-CONF="$DIR"
-if [ -d ~/.config/dwm-bar/modules ]; then
-    if [ -f ~/.config/dwm-bar/bar.conf ]; then
-        CONF=~/.config/dwm-bar/
-    fi
+if [ -f ~/.config/dwm-bar/bar.conf ]; then
+    CONF=~/.config/dwm-bar/bar.conf
+elif [ -f "$DIR/bar.conf" ]; then
+    CONF="$DIR/bar.conf"
+fi
+
+# Check for modules in /usr/local/share or local directory
+if [ -d /usr/local/share/dwm-bar-modules ]; then
+    MODULES=/usr/local/share/dwm-bar-modules
+elif [ -d "$DIR/modules" ]; then
+    MODULES="$DIR/modules"
 fi
 
 # Get provided flags with input
-while getopts ":hc:r:x" OPT; do
+while getopts ":hc:m:r:x" OPT; do
     case "$OPT" in
         # Print program information and help
         h)
@@ -104,18 +111,21 @@ while getopts ":hc:r:x" OPT; do
                 "$HELP"
             exit 0
             ;;
-        # Check for the existance of and use a user-specified config directory
+        # Check for the existance of and use a user-specified config file
         c)
-            if [ -d "$OPTARG/modules" ]; then
-                if [ -f "$OPTARG/bar.conf" ]; then
-                    CONF="$OPTARG"
-                else
-                    printf "The sepcified config directory does not contain 'bar.conf'\n" >&2
-                    exit 1
-                fi
+            if [ -f "$OPTARG" ]; then
+                CONF="$OPTARG"
             else
-                printf "The specified config directory does not contain a 'modules' directory\n" \
-                >&2
+                printf "The specified config file does not exist\n" >&2
+                exit 1
+            fi
+            ;;
+        # Check for the existance of and use a user-specified modules directory
+        m)
+            if [ -d "$OPTARG" ]; then
+                MODULES="$OPTARG"
+            else
+                printf "The specified modules directory does not exist\n" >&2
                 exit 1
             fi
             ;;
@@ -124,7 +134,7 @@ while getopts ":hc:r:x" OPT; do
             if [ "$OPTARG" -ge 0 ] 2> /dev/null; then
                 ARG_REFRESH_RATE="$OPTARG"
             else 
-                printf "Refresh rate must be a positive integer.\n" >&2
+                printf "Refresh rate must be a positive integer\n" >&2
                 exit 1
             fi
             ;;
@@ -160,11 +170,23 @@ fi
 trap 'rm -f "$PID_FILE"; trap - EXIT; exit 0' EXIT INT QUIT HUP
 
 # Source configuration file
-printf "Loading configuration at %s\n" "$CONF"
-if [ -f "$CONF/bar.conf" ]; then
-    . "$CONF/bar.conf"
+printf "Loading configuration at %s\n\n" "$CONF"
+if [ -f "$CONF" ]; then
+    . "$CONF"
 else
-    printf "No bar.conf found, using default options\n"
+    printf "No config found, using default options\n"
+fi
+
+# Source modules in modules directory
+if [ -d "$MODULES" ]; then
+    for MODULE in "$MODULES/"*; do
+        printf "Loading %s\n" "$MODULE"
+        if [ -f "$MODULE" ]; then
+            . "$MODULE"
+        fi
+    done
+else
+    printf "No modules directory found. Specify one with -m or install the script.\n" >&2
 fi
 
 # Override refresh rate if provided with -r
@@ -172,12 +194,8 @@ if [ "$ARG_REFRESH_RATE" != "" ]; then
     REFRESH_RATE="$ARG_REFRESH_RATE"
 fi
 
-# Source modules
-. "$CONF/modules/dwm_date.sh"
-. "$CONF/modules/dwm_pulse.sh"
-
 # Output current main refresh rate and loaded modules with refresh rates
-printf "Running dwm-bar with main refresh rate of %s seconds\n" "$REFRESH_RATE"
+printf "\nRunning dwm-bar with main refresh rate of %s second(s)...\n" "$REFRESH_RATE"
 
 # Display module output every time refresh rate elapses
 while true; do
