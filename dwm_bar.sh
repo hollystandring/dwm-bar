@@ -10,6 +10,27 @@
 # Create a PID file used to identify is dwm-bar is running
 PID_FILE="$XDG_RUNTIME_DIR/dwm-bar.pid"
 
+# Kill process and remove .pid file
+kill_bar() {
+    read -r PID < "$PID_FILE"
+        kill "$PID"
+        rm -f "$PID_FILE"
+    exit $1
+}
+
+# Check that colors are valid (prevents status2d crashing)
+color_valid() {
+    if [ $(expr length "$1") -eq 6 ]; then
+        if ! printf "%s" "$1" | grep -qE "[0-9A-Fa-f]{6}"; then
+            printf "'#%s' is not a valid hex color\n" "$1" >&2
+            kill_bar 1
+        fi
+    else
+        printf "'#%s' is not a valid hex color\n" "$1" >&2
+        kill_bar 1
+    fi 
+}
+
 # Get the directory this script is running from
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
@@ -76,10 +97,7 @@ while getopts ":hc:r:x" OPT; do
         # Kill running dwm-bar instances if found
         x)
             if [ -f "$XDG_RUNTIME_DIR/dwm-bar.pid" ]; then
-                read -r PID < "$PID_FILE"
-                kill "$PID"
-                rm -f "$PID_FILE"
-                exit 0
+                kill_bar 0
             else
                 printf "No instances of dwm-bar are running (no dwm-bar.pid found in %s/)\n" \
                 "$XDG_RUNTIME_DIR" >&2

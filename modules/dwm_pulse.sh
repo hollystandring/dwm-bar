@@ -12,7 +12,7 @@
 # OPTIONS
 # -i Identifiers to be displayed before module data corresponding to muted,
 #    low volume, medium volume, and high volume e.g. "ﱝ 奄 奔 墳"  
-# -d How to display volume data. 0: Nothing (just the percentage),
+# -f How to display volume data. 0: Nothing (just the percentage),
 #    1: "▰▰▰▰▱▱▱▱▱▱", 2: "▮▮▮▮▯▯▯▯▯▯" 3: "⚫⚫⚫⚫⚪⚪⚪⚪⚪⚪"
 # -p Include volume percentage after volume bar
 # -s Seperator displayed before module e.g. "["
@@ -23,19 +23,27 @@
 #    "identifier fg identifier bg". Requires status2d e.g. "#bd93f9 #21222c"
 
 dwm_pulse() {
+    # Check if pamixer installed
+    if ! command -v pamixer > /dev/null; then
+        printf "dwm_pulse: pamixer not found. Are you sure it's installed?\n" >&2
+        kill_bar 1
+    fi
+
     # Get the current volume and mute status from pamixer
     VOL=$(pamixer --get-volume)
     MUTED=$(pamixer --get-mute)
 
-    while getopts "i:d:ps:S:c:C:" OPT; do
+    while getopts "i:f:ps:S:c:C:" OPT; do
         case "$OPT" in
-            i) # Set the identifiers that displays before data
+            # Set the identifiers that displays before data
+            i)
                 IDEN_MUTE="$(printf "%s" "$OPTARG" | cut -d' ' -f1) "
                 IDEN_LOW="$(printf "%s" "$OPTARG" | cut -d' ' -f2) "
                 IDEN_MED="$(printf "%s" "$OPTARG" | cut -d' ' -f3) "
                 IDEN_HIGH="$(printf "%s" "$OPTARG" | cut -d' ' -f4) "
                 ;;
-            d) # Set full and empty volume bar symbols corresponding to selected arg
+            # Set full and empty volume bar symbols corresponding to selected arg
+            f)
                 case "$OPTARG" in
                     1)
                         BAR_FULL="▰"
@@ -51,21 +59,26 @@ dwm_pulse() {
                         ;;
                 esac
                 ;;
-            p) # Show the current volume as a percentage
+            # Show the current volume as a percentage
+            p)
                 PER="$VOL%"
                 ;;
-            s) # Set the first seperator that is displayed first in the module
+            # Set the first seperator that is displayed first in the module
+            s)
                 SEP1="$OPTARG"
                 ;;
-            S) # Set the second seperator that is displayed last in the module
+            # Set the second seperator that is displayed last in the module
+            S)
                 SEP2="$OPTARG"
                 ;;
-            c) # Apply colors to the identifier and reset
+            # Apply colors to the identifier and reset
+            c)
                 IDEN_COL_FG="^c$(printf "%s" "$OPTARG" | cut -d' ' -f1)^"
                 IDEN_COL_BG="^b$(printf "%s" "$OPTARG" | cut -d' ' -f2)^ "
                 IDEN_COL_RESET="^d^"
                 ;;
-            C) # Apply colors to the main module body and reset
+            # Apply colors to the main module body and reset
+            C)
                 DATA_COL_FG="^c$(printf "%s" "$OPTARG" | cut -d' ' -f1)^"
                 DATA_COL_BG="^b$(printf "%s" "$OPTARG" | cut -d' ' -f2)^ "
                 DATA_COL_RESET=" ^d^"
