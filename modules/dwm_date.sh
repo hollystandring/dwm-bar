@@ -36,37 +36,11 @@ dwm_date() {
                 ;;
             # Apply colors to the identifier and reset
             c)
-                HEX_1="$(printf "%s" "$OPTARG" | cut -d' ' -f1)"
-                HEX_2="$(printf "%s" "$OPTARG" | cut -d' ' -f2)"
-
-                # Check if colors are valid
-                if [ "$HEX_1" != "" ]; then
-                    color_valid "${HEX_1#?}"
-                fi 
-                if [ "$HEX_2" != "" ]; then
-                    color_valid "${HEX_2#?}"
-                fi 
-
-                IDEN_COL_FG="^c$HEX_1^"
-                IDEN_COL_BG="^b$HEX_2^ "
-                IDEN_COL_RESET="^d^"
+                set_iden_colors "$OPTARG"
                 ;;
             # Apply colors to the main module body and reset
             C)
-                HEX_1="$(printf "%s" "$OPTARG" | cut -d' ' -f1)"
-                HEX_2="$(printf "%s" "$OPTARG" | cut -d' ' -f2)"
-
-                # Check if colors are valid
-                if [ "$HEX_1" != "" ]; then
-                    color_valid "${HEX_1#?}"
-                fi 
-                if [ "$HEX_2" != "" ]; then
-                    color_valid "${HEX_2#?}"
-                fi 
-
-                DATA_COL_FG="^c$(printf "%s" "$OPTARG" | cut -d' ' -f1)^"
-                DATA_COL_BG="^b$(printf "%s" "$OPTARG" | cut -d' ' -f2)^ "
-                DATA_COL_RESET=" ^d^"
+                set_data_colors "$OPTARG"
                 ;;
         esac
     done
