@@ -44,8 +44,8 @@ $ cd dwm-bar
 2. (Optional) Install Dependencies from ```dep/YourDisto.txt```. This will install dependencies for ALL functions so consider excluding ones you do not plan to use. These can be found at the top of each bar function.
 ```
 $ sudo xbps-install -S $(cat dep/void.txt) # Void
-$ sudo pacman -S $(dep/arch.txt)           # Arch
-$ sudo dnf install $(dep/fedora.txt)       # Fedora
+$ sudo pacman -S $(cat dep/arch.txt)       # Arch
+$ sudo dnf install $(cat dep/fedora.txt)   # Fedora
 ```
 > :warning: There are no dnf packages for [spotifyd](https://github.com/Spotifyd/spotifyd), [pamixer](https://github.com/cdemoulins/pamixer) and [cmus](https://github.com/cmus/cmus). If you want to utilise these packages, please install them manually as shown in the corresponding gihub repos.
 3. (Optional) If you plan to use unicode identifiers, you should install a font which includes these ([Nerd Fonts](https://github.com/ryanoasis/nerd-fonts), [siji](https://github.com/stark/siji))
