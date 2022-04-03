@@ -6,7 +6,7 @@
 # GNU GPLv3
 
 # OPTIONS
-# -i Identifier to be displayed before module data e.g. ""
+# -i Identifier to be displayed before module data e.g. ""
 # -f Date format string. See "date --help" for variables e.g. "%d %b %T"
 # -s Seperator displayed before module e.g. "["
 # -S Seperator displayed after module e.g. "]"
@@ -41,6 +41,10 @@ dwm_date() {
             # Apply colors to the main module body and reset
             C)
                 set_data_colors "$OPTARG"
+                ;;
+            *)
+                printf "dwm-bar: dwm_date: invalid option -- %s\n" "$OPTARG"
+                exit 1
                 ;;
         esac
     done

@@ -15,12 +15,12 @@ kill_bar() {
     read -r PID < "$PID_FILE"
         kill "$PID"
         rm -f "$PID_FILE"
-    exit $1
+    exit "$1"
 }
 
 # Check that colors are valid (prevents status2d crashing)
 color_valid() {
-    if [ $(expr length "$1") -eq 6 ]; then
+    if [ ${#1} -eq 6 ]; then
         if ! printf "%s" "$1" | grep -qE "[0-9A-Fa-f]{6}"; then
             printf "'#%s' is not a valid hex color\n" "$1" >&2
             kill_bar 1
@@ -43,9 +43,9 @@ set_iden_colors() {
         color_valid "${HEX_2#?}"
     fi 
 
-    IDEN_COL_FG="^c$HEX_1^"
-    IDEN_COL_BG="^b$HEX_2^ "
-    IDEN_COL_RESET="^d^"
+    export IDEN_COL_FG="^c$HEX_1^"
+    export IDEN_COL_BG="^b$HEX_2^ "
+    export IDEN_COL_RESET="^d^"
 }
 
 set_data_colors() {
@@ -60,9 +60,9 @@ set_data_colors() {
         color_valid "${HEX_2#?}"
     fi 
 
-    DATA_COL_FG="^c$HEX_1^"
-    DATA_COL_BG="^b$HEX_2^ "
-    DATA_COL_RESET="^d^ "
+    export DATA_COL_FG="^c$HEX_1^"
+    export DATA_COL_BG="^b$HEX_2^ "
+    export DATA_COL_RESET="^d^ "
 }
 
 # Get the directory this script is running from
@@ -81,7 +81,8 @@ HELP="Usage: dwm-bar [OPTION]...
   -x Kill running instances of dwm-bar."
 
 # Default values used when no config provided
-MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
+MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
+MOD_2="dwm_pulse -i 'ﱝ 奄 奔 墳' -p -s '[' -S ']'"
 REFRESH_RATE=1
 
 # Check the user's .config for a modules directory and bar.conf
@@ -172,6 +173,7 @@ trap 'rm -f "$PID_FILE"; trap - EXIT; exit 0' EXIT INT QUIT HUP
 # Source configuration file
 printf "Loading configuration at %s\n\n" "$CONF"
 if [ -f "$CONF" ]; then
+    # shellcheck source=./bar.conf
     . "$CONF"
 else
     printf "No config found, using default options\n"
@@ -182,6 +184,7 @@ if [ -d "$MODULES" ]; then
     for MODULE in "$MODULES/"*; do
         printf "Loading %s\n" "$MODULE"
         if [ -f "$MODULE" ]; then
+            # shellcheck source=/dev/null
             . "$MODULE"
         fi
     done

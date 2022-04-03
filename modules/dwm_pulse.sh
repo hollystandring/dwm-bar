@@ -11,7 +11,7 @@
 
 # OPTIONS
 # -i Identifiers to be displayed before module data corresponding to muted,
-#    low volume, medium volume, and high volume e.g. "ﱝ 奄 奔 墳"  
+#    low volume, medium volume, and high volume e.g. "ﱝ 奄 奔 墳"
 # -f How to display volume data. 0: Nothing (just the percentage),
 #    1: "▰▰▰▰▱▱▱▱▱▱", 2: "▮▮▮▮▯▯▯▯▯▯" 3: "⚫⚫⚫⚫⚪⚪⚪⚪⚪⚪"
 # -p Include volume percentage after volume bar
@@ -79,6 +79,10 @@ dwm_pulse() {
             C)
                 set_data_colors "$OPTARG"
                 ;;
+            *)
+                printf "dwm-bar: dwm_pulse: invalid option -- %s\n" "$OPTARG"
+                exit 1
+                ;;
         esac
     done
 
@@ -100,8 +104,8 @@ dwm_pulse() {
     fi 
 
     # The amount of full and empty bars to make up the volume bar
-    FULL_BARS=$(($VOL/10))
-    EMPTY_BARS=$((10-$FULL_BARS))
+    FULL_BARS=$((VOL/10))
+    EMPTY_BARS=$((10-FULL_BARS))
 
     # Display the volume bar
     i=0
