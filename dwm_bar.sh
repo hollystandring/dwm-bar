@@ -7,14 +7,20 @@
 
 # Dependencies: xorg-xsetroot
 
+# TODO: - Set module refresh rate independently - potentially only run certain modules
+#         on events (e.g. song change, volume change)
+#       - Overhaul docs for new changes: README.md, CONTRIBUTING.md
+#       - Finish moving over modules from main branch
+
 # Create a PID file used to identify is dwm-bar is running
 PID_FILE="$XDG_RUNTIME_DIR/dwm-bar.pid"
 
-# Kill process and remove .pid file
+# Kill process, remove .pid file and set blank status
 kill_bar() {
     read -r PID < "$PID_FILE"
         kill "$PID"
         rm -f "$PID_FILE"
+    xsetroot -name ""
     exit "$1"
 }
 
@@ -168,7 +174,7 @@ else
 fi
 
 # Remove PID file on exit/termination
-trap 'rm -f "$PID_FILE"; trap - EXIT; exit 0' EXIT INT QUIT HUP
+trap 'kill_bar 0; trap - EXIT; exit 0' EXIT INT QUIT HUP
 
 # Source configuration file
 printf "Loading configuration at %s\n\n" "$CONF"

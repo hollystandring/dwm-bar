@@ -15,6 +15,9 @@
 # -C Hexidecimal forground and background color values for data formatted as
 #    "identifier fg identifier bg". Requires status2d e.g. "#bd93f9 #21222c"
 
+# TODO: Dynamic clock unicode glyph by hour. This was working using a case but
+#       for some reason did not work when part of the larger dwm_bar.sh script
+
 dwm_date() {
     while getopts "i:f:s:S:c:C:" OPT; do
         case "$OPT" in

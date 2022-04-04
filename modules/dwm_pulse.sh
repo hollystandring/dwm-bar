@@ -22,6 +22,8 @@
 # -C Hexidecimal forground and background color values for data formatted as
 #    "identifier fg identifier bg". Requires status2d e.g. "#bd93f9 #21222c"
 
+# TODO: Alsa support
+
 dwm_pulse() {
     # Check if pamixer installed
     if ! command -v pamixer > /dev/null; then
