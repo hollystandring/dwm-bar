@@ -6,7 +6,8 @@
 # GNU GPLv3
 
 # OPTIONS
-# -i Identifier to be displayed before module data e.g. ""
+# -i Identifier to be displayed before module data e.g. "". If set to
+#    "dynamic", a unicode clock corresponding to the current hour will be used.
 # -f Date format string. See "date --help" for variables e.g. "%d %b %T"
 # -s Seperator displayed before module e.g. "["
 # -S Seperator displayed after module e.g. "]"
@@ -15,15 +16,53 @@
 # -C Hexidecimal forground and background color values for data formatted as
 #    "identifier fg identifier bg". Requires status2d e.g. "#bd93f9 #21222c"
 
-# TODO: Dynamic clock unicode glyph by hour. This was working using a case but
-#       for some reason did not work when part of the larger dwm_bar.sh script
-
 dwm_date() {
     while getopts "i:f:s:S:c:C:" OPT; do
         case "$OPT" in
             # Set the identifier that displays before data
             i)
-                IDEN="$OPTARG "
+                if [ "$OPTARG" = "dynamic" ]; then
+                    case $(date "+%I") in
+                        01)
+                            IDEN=" "
+                            ;;
+                        02)
+                            IDEN=" "
+                            ;;
+                        03)
+                            IDEN=" "
+                            ;;
+                        04)
+                            IDEN=" "
+                            ;;
+                        05)
+                            IDEN=" "
+                            ;;
+                        06)
+                            IDEN=" "
+                            ;;
+                        07)
+                            IDEN=" "
+                            ;;
+                        08)
+                            IDEN=" "
+                            ;;
+                        09)
+                            IDEN=" "
+                            ;;
+                        10)
+                            IDEN=" "
+                            ;;
+                        11)
+                            IDEN=" "
+                            ;;
+                        *)
+                            IDEN=" "
+                            ;;
+                    esac
+                else
+                    IDEN="$OPTARG "
+                fi
                 ;;
             # Apply supplied date format
             f)
