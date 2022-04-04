@@ -7,9 +7,7 @@
 
 # Dependencies: xorg-xsetroot
 
-# TODO: - Set module refresh rate independently - potentially only run certain modules
-#         on events (e.g. song change, volume change)
-#       - Overhaul docs for new changes: README.md, CONTRIBUTING.md
+# TODO: - Overhaul docs for new changes: README.md, CONTRIBUTING.md
 #       - Finish moving over modules from main branch
 
 # Create a PID file used to identify is dwm-bar is running
@@ -82,13 +80,12 @@ HELP="Usage: dwm-bar [OPTION]...
      'bar.conf' in the script directory, or default values will be used.
   -m Specify modules directory, otherwise '/usr/local/share/dwm-bar-modules/'
      or 'modules' in the script directory will be used.
-  -r How many seconds between main bar refreshes. Individual modules use their
-     own. Overrides config.
+  -r How many seconds between main bar refreshes. Overrides config.
   -x Kill running instances of dwm-bar."
 
 # Default values used when no config provided
 MOD_1="dwm_date -i 'DATE' -f '%d %b %T' -s '[' -S ']'"
-MOD_2="dwm_pulse -i 'MUTE VOL VOL VOL' -p -s '[' -S ']'"
+MOD_2="dwm_volume -i 'MUTE VOL VOL VOL' -p -s '[' -S ']'"
 REFRESH_RATE=1
 
 # Check the user's .config for a modules directory and bar.conf
@@ -150,8 +147,11 @@ while getopts ":hc:m:r:x" OPT; do
             if [ -f "$XDG_RUNTIME_DIR/dwm-bar.pid" ]; then
                 kill_bar 0
             else
-                printf "No instances of dwm-bar are running (no dwm-bar.pid found in %s/)\n" \
-                "$XDG_RUNTIME_DIR" >&2
+                printf \
+                "No instances of dwm-bar are running (%s %s/)\n" \
+                "no dwm-bar.pid found in" \
+                "$XDG_RUNTIME_DIR" \
+                >&2
                 exit 1
             fi
             ;;
@@ -165,8 +165,10 @@ done
 
 # Check if dwm-bar is already running and prevent exit if so
 if [ -f "$XDG_RUNTIME_DIR/dwm-bar.pid" ]; then
-    printf "An instance of dwm-bar is already running. %s\n" \
-    "Run dwm-bar -x to kill any running instances" >&2
+    printf \
+    "An instance of dwm-bar is already running. %s\n" \
+    "Run dwm-bar -x to kill any running instances" \
+    >&2
     exit 1
 else 
     # Populate PID with current PID
@@ -195,7 +197,9 @@ if [ -d "$MODULES" ]; then
         fi
     done
 else
-    printf "No modules directory found. Specify one with -m or install the script.\n" >&2
+    printf \
+    "No modules directory found. Specify one with -m or install dwm-bar\n" \
+    >&2
 fi
 
 # Override refresh rate if provided with -r
@@ -203,8 +207,10 @@ if [ "$ARG_REFRESH_RATE" != "" ]; then
     REFRESH_RATE="$ARG_REFRESH_RATE"
 fi
 
-# Output current main refresh rate and loaded modules with refresh rates
-printf "\nRunning dwm-bar with main refresh rate of %s second(s)...\n" "$REFRESH_RATE"
+# Output current refresh rate and loaded modules with refresh rates
+printf \
+"\nRunning dwm-bar with refresh rate of %s second(s)...\n" \
+"$REFRESH_RATE"
 
 # Display module output every time refresh rate elapses
 while true; do

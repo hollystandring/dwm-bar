@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# A dwm-bar module that shows the current master volume of PulseAudio
+# A dwm-bar module that shows the current master volume of Alsa, PulseAudio, or
+# PipeWire
 # Joe Standring <git@joestandring.com>
 # https://github.com/joestandring/dwm-bar/blob/master/modules/dwm_pulse.sh
 # GNU GPLv3
 
-# Thanks to Changaco for progress bar styles: https://github.com/Changaco/unicode-progress-bars
+# Thanks to Changaco for progress bar styles:
+# https://github.com/Changaco/unicode-progress-bars
 
-# Dependencies: pamixer
+# Dependencies: pamixer (PulseAudio/PipeWire)/alsa-utils (Alsa)
 
 # OPTIONS
 # -i Identifiers to be displayed before module data corresponding to muted,
@@ -15,6 +17,7 @@
 # -f How to display volume data. 0: Nothing (just the percentage),
 #    1: "▰▰▰▰▱▱▱▱▱▱", 2: "▮▮▮▮▯▯▯▯▯▯" 3: "⚫⚫⚫⚫⚪⚪⚪⚪⚪⚪"
 # -p Include volume percentage after volume bar
+# -a Use amixer (Alsa). pamixer (PulseAudio/PipeWire) will be used if not set
 # -s Seperator displayed before module e.g. "["
 # -S Seperator displayed after module e.g. "]"
 # -c Hexidecimal forground and background color values for identifier formatted
@@ -22,20 +25,11 @@
 # -C Hexidecimal forground and background color values for data formatted as
 #    "identifier fg identifier bg". Requires status2d e.g. "#bd93f9 #21222c"
 
-# TODO: Alsa support
+dwm_volume() {
+    USE_ALSA=0
+    SHOW_PER=0
 
-dwm_pulse() {
-    # Check if pamixer installed
-    if ! command -v pamixer > /dev/null; then
-        printf "dwm_pulse: pamixer not found. Are you sure it's installed?\n" >&2
-        kill_bar 1
-    fi
-
-    # Get the current volume and mute status from pamixer
-    VOL=$(pamixer --get-volume)
-    MUTED=$(pamixer --get-mute)
-
-    while getopts "i:f:ps:S:c:C:" OPT; do
+    while getopts "i:f:pas:S:c:C:" OPT; do
         case "$OPT" in
             # Set the identifiers that displays before data
             i)
@@ -44,7 +38,7 @@ dwm_pulse() {
                 IDEN_MED="$(printf "%s" "$OPTARG" | cut -d' ' -f3) "
                 IDEN_HIGH="$(printf "%s" "$OPTARG" | cut -d' ' -f4) "
                 ;;
-            # Set full and empty volume bar symbols corresponding to selected arg
+            # Set full and empty volume bar symbols for selected arg
             f)
                 case "$OPTARG" in
                     1)
@@ -63,7 +57,11 @@ dwm_pulse() {
                 ;;
             # Show the current volume as a percentage
             p)
-                PER="$VOL%"
+                SHOW_PER=1
+                ;;
+            # Which backend to use
+            a)
+                USE_ALSA=1
                 ;;
             # Set the first seperator that is displayed first in the module
             s)
@@ -82,14 +80,41 @@ dwm_pulse() {
                 set_data_colors "$OPTARG"
                 ;;
             *)
-                printf "dwm-bar: dwm_pulse: invalid option -- %s\n" "$OPTARG" >&2
+                printf "dwm-bar: dwm_volume: invalid option -- %s\n" \
+                "$OPTARG" >&2
                 exit 1
                 ;;
         esac
     done
 
+    # Get current volume and mute status from pamixer/amixer
+    if [ "$USE_ALSA" -eq 1 ]; then
+        if ! command -v amixer > /dev/null; then
+            printf \
+            "dwm_volume: amixer not found. Are you sure it's installed?\n" >&2
+            kill_bar 1
+        fi
+
+        VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
+        MUTED=$(amixer sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
+    else
+        if ! command -v pamixer > /dev/null; then
+            printf \
+            "dwm_volume: pamixer not found. Are you sure it's installed?\n" >&2
+            kill_bar 1
+        fi
+
+        VOL=$(pamixer --get-volume)
+        MUTED=$(pamixer --get-mute)
+    fi
+
+    # Show volume percentage
+    if [ "$SHOW_PER" -eq 1 ]; then
+        PER="$VOL%"
+    fi
+
     # Treat volume being 0 and muted as the same
-    if [ "$MUTED" = "true" ]; then
+    if [ "$MUTED" = "true" ] || [ "$MUTED" = "off" ]; then
         VOL=0
         PER="MUTE"
     fi

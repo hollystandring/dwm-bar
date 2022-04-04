@@ -85,7 +85,7 @@ dwm_date() {
                 set_data_colors "$OPTARG"
                 ;;
             *)
-                printf "dwm-bar: dwm_date: invalid option -- %s\n" "$OPTARG" >&2
+                printf "dwm_date: invalid option -- %s\n" "$OPTARG" >&2
                 exit 1
                 ;;
         esac
