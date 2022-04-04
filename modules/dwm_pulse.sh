@@ -80,7 +80,7 @@ dwm_pulse() {
                 set_data_colors "$OPTARG"
                 ;;
             *)
-                printf "dwm-bar: dwm_pulse: invalid option -- %s\n" "$OPTARG"
+                printf "dwm-bar: dwm_pulse: invalid option -- %s\n" "$OPTARG" >&2
                 exit 1
                 ;;
         esac

@@ -62,7 +62,7 @@ set_data_colors() {
 
     export DATA_COL_FG="^c$HEX_1^"
     export DATA_COL_BG="^b$HEX_2^ "
-    export DATA_COL_RESET="^d^ "
+    export DATA_COL_RESET=" ^d^"
 }
 
 # Get the directory this script is running from
@@ -81,8 +81,8 @@ HELP="Usage: dwm-bar [OPTION]...
   -x Kill running instances of dwm-bar."
 
 # Default values used when no config provided
-MOD_1="dwm_date -i '' -f '%d %b %T' -s '[' -S ']'"
-MOD_2="dwm_pulse -i 'ﱝ 奄 奔 墳' -p -s '[' -S ']'"
+MOD_1="dwm_date -i 'DATE' -f '%d %b %T' -s '[' -S ']'"
+MOD_2="dwm_pulse -i 'MUTE VOL VOL VOL' -p -s '[' -S ']'"
 REFRESH_RATE=1
 
 # Check the user's .config for a modules directory and bar.conf
