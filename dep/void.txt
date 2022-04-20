@@ -13,3 +13,4 @@ curl
 pamixer
 spotifyd
 playerctl
+xsetroot
