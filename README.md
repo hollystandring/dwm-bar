@@ -34,7 +34,7 @@ A modular statusbar for dwm
   - [dwm_solar_panel](#dwm_solar_panel)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
-
+> :warning: While I try to be as active as I can be, it may take me some time to resolve issues as I am much busier these days than when I started this project. I appreciate ALL contributions and will try my best to respond as soon as I am able to. Thank you for understanding :) - @joestandring
 ## Installation
 1. Clone and enter the repository:
 ```
