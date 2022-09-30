@@ -32,6 +32,7 @@ A modular statusbar for dwm
   - [dwm_loadavg](#dwm_loadavg)
   - [dwm_currency](#dwm_currency)
   - [dwm_solar_panel](#dwm_solar_panel)
+  - [dwm_network_speed](#dwm_network_speed)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 > :warning: While I try to be as active as I can be, it may take me some time to resolve issues as I am much busier these days than when I started this project. I appreciate ALL contributions and will try my best to respond as soon as I am able to. Thank you for understanding :) - @joestandring
@@ -248,6 +249,11 @@ Displays the current rate of your currency in comparison to the USD provided by 
 [💡 1.225 ]
 ```
 Dependencies: ```curl```
+### dwm_network_speed
+Displays the speed of download and upload.
+```
+[李 0KB/s 0KB/s]
+```
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
 ## Acknowledgements
