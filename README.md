@@ -33,6 +33,8 @@ A modular statusbar for dwm
   - [dwm_currency](#dwm_currency)
   - [dwm_solar_panel](#dwm_solar_panel)
   - [dwm_network_speed](#dwm_network_speed)
+  - [dwm_binance](#dwm_binance)
+  - [dwm_ip](#dwm_ip)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 > :warning: While I try to be as active as I can be, it may take me some time to resolve issues as I am much busier these days than when I started this project. I appreciate ALL contributions and will try my best to respond as soon as I am able to. Thank you for understanding :) - @joestandring
@@ -254,7 +256,24 @@ Displays the speed of download and upload.
 ```
 [李 0KB/s 0KB/s]
 ```
+### dwm_binance
+
+Displays the btc last price on binance.
+
+```
+[₿ 20890.8]
+```
+
+### dwm_ip
+
+Displays the public ip and local ip.
+
+```
+[IP 127.0.0.1]
+```
+
 ## Contributing
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
 ## Acknowledgements
 Code for some functions was modified from:
