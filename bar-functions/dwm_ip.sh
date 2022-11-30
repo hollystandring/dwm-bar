@@ -4,7 +4,7 @@
 # antx-code <wkaifeng2007@163.com>
 # GNU GPLv3
 
-# IP is formatted like like this: "[IP 127.0.0.1]"
+# IP is formatted like this: "[IP 127.0.0.1]"
 ip_icon="IP"
 dwm_ip () {
     randomNumber=`shuf -i 1-100 -n 1`
