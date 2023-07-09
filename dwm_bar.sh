@@ -56,6 +56,7 @@ parallelize() {
 }
 parallelize &
 
+bar_color="^c#3B001B^^b#4865660x99^"
 # Update dwm status bar every second
 while true
 do
@@ -87,7 +88,7 @@ do
     # Append results of each func one by one to the lowerbar string
     lowerbar=""
     
-    xsetroot -name "$upperbar"
+    xsetroot -name "$bar_color$upperbar"
     # Uncomment the line below to enable the lowerbar 
     #xsetroot -name "$upperbar;$lowerbar"
     sleep 1
