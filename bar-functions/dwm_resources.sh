@@ -14,7 +14,7 @@ dwm_resources () {
 	MEMUSED=$(echo $free_output | awk '{print $3}')
 	MEMTOT=$(echo $free_output | awk '{print $2}')
 	# CPU temperature
-	CPU=$(top -bn1 | grep Cpu | awk '{print $2}')%
+	CPU=$(top -bn1 | grep -m 1 CPU | awk '{print $2}')%
 	#CPU=$(sysctl -n hw.sensors.cpu0.temp0 | cut -d. -f1)
 	# Used and total storage in /home (rounded to 1024B)
 	STOUSED=$(echo $df_output | awk '{print $3}')
