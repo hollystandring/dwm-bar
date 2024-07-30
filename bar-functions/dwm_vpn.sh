@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # A dwm_bar function to show VPN connections with OpenVPN or WireGuard (if any are active)
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: NetworkManager, NetworkManager-openvpn (for OpenVPN connections)

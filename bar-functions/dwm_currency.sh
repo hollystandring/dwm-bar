@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # A dwm_bar function to print the rate of CURRENCY/USD from rate.sx using rate.sx/1CURRENCY
-# Creator of the project: Joe Standring <git@joestandring.com>
 # Additional plugin added by Brayan de Albuquerque <brayandealbuquerque@gmail.com>
 # GNU GPLv3
 

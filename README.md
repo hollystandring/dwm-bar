@@ -1,6 +1,6 @@
 # dwm-bar
 A modular statusbar for dwm
-![screenshot](https://raw.githubusercontent.com/joestandring/dwm-bar/master/sshot.png)
+![screenshot](https://raw.githubusercontent.com/hollystandring/dwm-bar/master/sshot.png)
 ## Table of Contents
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -35,11 +35,12 @@ A modular statusbar for dwm
   - [dwm_network_speed](#dwm_network_speed)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
-> :warning: While I try to be as active as I can be, it may take me some time to resolve issues as I am much busier these days than when I started this project. I appreciate ALL contributions and will try my best to respond as soon as I am able to. Thank you for understanding :) - @joestandring
+# THIS PROJECT HAS MOVED
+I no longer use this account for personal reasons, however this repo has been left up as an archive as to not break existing configs. This project can now be found on my [Codeberg](https://codeberg.org/pnda_space) account. I'd like to thank everyone who ever contributed here/used this project and I hope it has inspired your own work <3 - *Holly*
 ## Installation
 1. Clone and enter the repository:
 ```
-git clone https://github.com/joestandring/dwm-bar
+git clone https://github.com/hollystandring/dwm-bar
 cd dwm-bar
 ```
 2. (Optional) Install Dependencies from ```dep/YourDisto.txt```. This will install dependencies for ALL functions so consider excluding ones you do not plan to use. These can be found at the top of each bar function.
@@ -131,13 +132,13 @@ Displays battery level and status
 [🔋 100% full]
 ```
 ### dwm_countdown
-Displays the status of [countdown](https://github.com/joestandring/countdown)
+Displays the status of [countdown](https://github.com/hollystandring/countdown)
 ```
 [⏳ 00:10:00]
 ```
 Dependencies: ```countdown.sh```
 ### dwm_alarm
-Displays upcoming alarms from [alarm](https://github.com/joestandring/alarm)
+Displays upcoming alarms from [alarm](https://github.com/hollystandring/alarm)
 ```
 [⏰ 22:30:00]
 ```

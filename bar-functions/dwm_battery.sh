@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # A dwm_bar function to read the battery level and status
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 dwm_battery () {

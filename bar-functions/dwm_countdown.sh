@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # A dwm_status function that displays the status of countdown.sh
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
-# Dependencies: https://github.com/joestandring/countdown
+# Dependencies: https://github.com/hollystandring/countdown
 
 dwm_countdown () {
     for f in /tmp/countdown.*; do
