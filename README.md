@@ -1,7 +1,7 @@
 # dwm-bar
 A modular statusbar for dwm
 # THIS PROJECT HAS A NEW HOME
-I no longer use this account for personal reasons, however this repo has been left up as an archive as to not break existing configs. This project can now be found on my [Codeberg](https://codeberg.org/pnda_space) account. I'd like to thank everyone who ever contributed here/used this project and I hope it has inspired your own work <3 - *Holly*
+I no longer use this account for personal reasons, however this repo has been left up as an archive as to not break existing configs. This project can now be found on my [Codeberg](https://codeberg.org/pndaspace) account. I'd like to thank everyone who ever contributed here/used this project and I hope it has inspired your own work <3 - *Holly*
 ![screenshot](https://raw.githubusercontent.com/hollystandring/dwm-bar/master/sshot.png)
 ## Table of Contents
 - [Installation](#installation)
