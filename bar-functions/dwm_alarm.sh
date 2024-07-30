@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # A dwm_status function that displays upcoming alarms from alarm.sh
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
-# Dependencies: https://github.com/joestandring/alarm
+# Dependencies: https://github.com/hollystandring/alarm
 
 dwm_alarm () {
     for f in /tmp/alarm.*; do

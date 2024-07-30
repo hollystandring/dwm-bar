@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # A dwm_bar function to display information regarding system memory, CPU temperature, and storage
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 df_check_location='/home'

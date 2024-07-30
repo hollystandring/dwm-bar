@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # A dwm_bar function that shows the current artist, track, duration, and status from Spotify using playerctl
-# Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
 # Dependencies: spotify/spotifyd, playerctl
